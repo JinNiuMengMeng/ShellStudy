@@ -1,0 +1,25 @@
+{
+    "server": "103.114.161.158", //服务器
+    "server_port": 2322, //服务器端口
+    "password": "dongtaiwang.com",  //密码
+    "method": "aes-256-cfb",  //加密方式
+    "ssr_protocol": "origin",  //协议
+    "obfs": "plain",  //混淆
+    "local_address": "127.0.0.1",
+    "local_port": 1080,
+    "group": "Charles Xu",
+
+    "server_ipv6": "::",
+    "obfsparam": "",
+    "protoparam": "",
+    "speed_limit_per_con": 0,
+    "speed_limit_per_user": 0,
+    "additional_ports" : {}, 
+    "additional_ports_only" : false,
+    "timeout": 120,
+    "udp_timeout": 60,
+    "dns_ipv6": false,
+    "connect_verbose_info": 0,
+    "redirect": "",
+    "fast_open": false
+}
