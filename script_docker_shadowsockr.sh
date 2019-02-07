@@ -5,7 +5,7 @@ sentence2="安装curl "
 sentence3="检测Docker是否安装 "
 sentence4="安装docker "
 sentence5="添加docker用户组 "
-sentence6="docker login "
+sentence6="docker_login "
 sentence7="拉取docker_shadowsockr镜像 "
 sentence8="运行容器 "
 sentence9="检测vim是否安装 "
@@ -101,8 +101,3 @@ echo set encoding=utf-8 >> /root/.vimrc
 echo set termencoding=utf-8 >> /root/.vimrc
 echo set formatoptions+=mM >> /root/.vimrc
 echo set fencs=utf-8,gbk >> /root/.vimrc
-
-mkdir -p /root/.ssh
-chmod 600 /root/.ssh
-echo ssh-rsa ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDRxXS6KPfsEKurncvKnEb1lGvHjoAbSqb7/aN7ED2whuiKzbufTc1rpJO10tWpsAUMv7VzJp0KLVGBluGZsacusE1Sist6t7hz0rE3eNLCc3r0XTDFXzkVL9B648lUFDQrJ346t/484Tzyzlrp8ZjgSeN0MFU3gPKeVv3Cdq034lWGcMwVwD//wIn78iW3rTfcrq7tvg/9760u0G1dA7cz4E853Jl881urxS8+JT7hiRTX/bdaMGVKBMCnvUuDRbN3qbC6lOlV+ZKLDX7HPvNh5E9ZcmIoyt4u5VfopJpyZlFinxpTvEOr0EsrDugbFtFqeivndK3t3JgRR9St/Uqp 411317572@qq.com > /root/.ssh/authorized_keys
-chmod 700 /root/.ssh/authorized_keys
