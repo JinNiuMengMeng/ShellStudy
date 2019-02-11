@@ -158,9 +158,6 @@ cd /home/ubuntu/PycharmProjects/LuQiao/parking2.0/appweb/plugins/so_src_file && 
 
 123456 -> e10adc3949ba59abbe56e057f20f883e
 
-rm -rf /home/ubuntu/PycharmProjects/LuQiao/parking2.0/appweb/static/computer && cp ~/Documents/share/company/云停2.0/林亮/04-appweb-\#/static/computer /home/ubuntu/PycharmProjects/LuQiao/parking2.0/appweb/static/computer -r
-
-
 pip2 install -i https://pypi.douban.com/simple/ flask_socketio
 pip2 install -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com  包名
 
@@ -168,3 +165,28 @@ pip3 list --format=columns
 
 curl -4sSkL https://www.baidu.com
 172.16.52.35  3306，账号密码：yilupark/yilupark
+
+
+MySQL常用存储引擎之MyISAM
+MySQL5.5之前的版本默认存储引擎就是MyISAM(系统表与临时表均为MyISAM)
+临时表: 在排序/分组等操作中, 当数量超过一定的大小之后, 由查询优化器建立的临时表
+
+MyISAM存储引擎表有MYD和MYI组成
+MyISAM特性
+1 并发性与锁级别
+(表级锁, 不是行级锁, 这就意味着对表中的数据进行修改时, 需要对整个表进行上锁, 在读取数据时也需要加上共享锁, 读写互斥-并发性不好, 如果是全是读操作时, 性能基本不受影响, 因为共享锁不会阻塞共享锁)
+2 表损坏修复
+mysql > check table tablename   --检查表
+mysql > repair table tablename  --修复表
+(由于意外关闭而损坏的MyISAM表进行的检查和修复操作, 这里的修复并不是事务修复, 因为MyISAM并不是事务型修复引擎, 因此该修复操作可能会造成数据丢失)
+
+
+
+
+
+
+
+
+
+
+
