@@ -1,9 +1,5 @@
-类里面的new和init的区别
+Docker组件(C/S)
 
-new/init区别
-说说__new__和__init__的区别
-1. __init__为初始化方法,而__new__方法才是是真正的构造函数。只有继承了object的新式类才有__new__.
-2. __new__至少要有一个参数cls,代表要实例化的类,此参数在实例化时由Python解释器自动提供,__new__必
-须要有返回值,返回实例化出来的实例。
-3. __init__有一个参数self,就是这个__new__返回的实例, 先运行__new__ 然后才运行__init__.
-4. __init__在__new__的基础上可以完成一些其它初始化的动作,__init__不需要返回值.
+- Docker Client: Docker 的客户端
+- Docker Server: Docker deamon 的组要组曾部分, 接受用户通过Docker Client发送的请求, 并按照相应的路由规则实现路由分发
+- Docker Registry: Registry是Docker镜像的中央存储仓库(pull/push)

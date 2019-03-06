@@ -40,10 +40,10 @@ totalPoints	是	int	本次取得积分接口所得到的总积分值。即iparki
 totalPointsFee	是	int	本次取得积分接口所得到的总积分值。即iparkingPointsInfoByTelno接口所取得可用的pointsFee
 
 
-1.积分兑换时，要求可以自选档位。（250积分兑换30分钟，500积分兑换60分钟，以此类推，250为一个档，一次最多兑换1500积分）
+1.积分兑换时，要求可以自选档位。(250积分兑换30分钟，500积分兑换60分钟，以此类推，250为一个档，一次最多兑换1500积分)
 2.一次通行只能兑换一次。一次通行中，即使只一次只兑换了500积分，无法再一次兑换1000积分
 3.自然日24小时内多次入场，只允许兑换抵用2次，无法使用三次及以上积分抵扣
-4.夜间（22: 00（含）-次日7: 30）入场的车辆，不允许兑换积分
+4.夜间(22: 00(含)-次日7: 30)入场的车辆，不允许兑换积分
 
 
 *  *  * *  *   My Command
@@ -150,11 +150,20 @@ scp /home/ubuntu/PycharmProjects/LuQiao/parking2.0/ice_feature/7_Ice_test/client
 ssh -6 root@2001:19f0:5:3c79:5400:01ff:fed7:93dc%wlp5s0
 
 # ----- 将 python 编译成 so 文件 -------
+/home/ubuntu/.pyenv/versions/3.6.6/envs/parking36env/bin/
 /home/ubuntu/Env/parkingPy27env/bin/cython handle_mysql.py
 gcc -c -fPIC -I /usr/include/python2.7/ handle_mysql.c
 gcc -shared handle_mysql.o -o handle_mysql.so
-# ----- 汇总 -------
-cd /home/ubuntu/PycharmProjects/LuQiao/parking2.0/appweb/plugins/so_src_file && /home/ubuntu/Env/parkingPy27env/bin/cython handle_mysql.py && gcc -c -fPIC -I /usr/include/python2.7/ handle_mysql.c && gcc -shared handle_mysql.o -o handle_mysql.so && mv handle_mysql.so ../ && rm handle_mysql.o handle_mysql.c
+# ----- 汇总 --- 使用python2 ----
+cd /home/ubuntu/PycharmProjects/LuQiao/parking2.0/appweb/plugins/so_src_file && cython handle_mysql.py && gcc -c -fPIC -I /usr/include/python2.7/ handle_mysql.c && gcc -shared handle_mysql.o -o handle_mysql.so && mv handle_mysql.so ../ && rm handle_mysql.o handle_mysql.c
+# ----- 汇总 --- 使用python3 ----
+cd /home/ubuntu/PycharmProjects/LuQiao/parking2.0/appweb/plugins/so_src_file && /home/ubuntu/.pyenv/versions/3.6.6/envs/parking36env/bin/cython handle_mysql.py && gcc -c -fPIC -I /usr/include/python3.6/ handle_mysql.c && gcc -shared handle_mysql.o -o handle_mysql.so && mv handle_mysql.so ../ && rm handle_mysql.o handle_mysql.c
+
+/home/ubuntu/.pyenv/versions/3.6.6/envs/parking36env/bin/cython handle_mysql.py
+gcc -c -fPIC -I /usr/include/python3.6/ handle_mysql.c
+gcc -shared handle_mysql.o -o handle_mysql.so
+mv handle_mysql.so ../
+
 
 123456 -> e10adc3949ba59abbe56e057f20f883e
 
@@ -180,34 +189,21 @@ mysql > check table tablename   --检查表
 mysql > repair table tablename  --修复表
 (由于意外关闭而损坏的MyISAM表进行的检查和修复操作, 这里的修复并不是事务修复, 因为MyISAM并不是事务型修复引擎, 因此该修复操作可能会造成数据丢失)
 
+https://pvp.qq.com/cp/a20161115tyf/page1.shtml
 
 
 
+http://0.0.0.0:8000/parking2/
 
+rm -rf /home/ubuntu/PycharmProjects/LuQiao/parking2.0/appweb/static/computer && rm -rf /home/ubuntu/PycharmProjects/LuQiao/parking2.0/appweb/templates/computer/index.html && cp ~/Documents/share/company/云停2.0/林亮/appweb/static/computer /home/ubuntu/PycharmProjects/LuQiao/parking2.0/appweb/static/computer -r && cp  ~/Documents/share/company/云停2.0/林亮/appweb/templates/computer/index.html /home/ubuntu/PycharmProjects/LuQiao/parking2.0/appweb/templates/computer/
 
+rm -rf .git .gitignore .idea && find ./ -name "*.pyc" | xargs rm
+gunicorn manage:appWeb -c gunicorn_info.py
+192.168.14.200
 
-1.gevent的起源，发展，特点，使用情况以及本机安装 18:58
-2.gevent基础之进程,线程与协程16:16
-3.gevent基础之阻塞，非阻塞21:31
-4.gevent基础之同步，异步22:32
-5.greentlet基本原理14:02
-6.gevent中的Greentlet基本使用10:02
-7.Greentlet超时处理与状态控制13:58
-8.定制Greenlet08:57
-9.Greenlets互相通信之Event15:16
-10.greenlets互相通信之Queue20:32
-11.如何管理多个Greenelet22:01
-12.greenlet间同步方法：信号量08:47
-13.gevent中使用子进程14:33
-14.gevent如何使用monkey patch12:03
-15.gevent.server使用21:49
-16.gevent.WSGIServer使用16:26
-17.gevent实现爬虫并与普通多线程比较22:35
-18.gevent如何实现长轮询15:34
-19.gevent-websocket使用09:13
-20.gevent实现聊天服务器16:35
-21.gevent.core源码分析
-22.gevent源码分析之hub
-23.gevent源码分析之socket
-24.gevent源码分析之server
-25.gevent总结
+ifconfig eth0 192.168.14.200 netmask 255.255.255.0
+
+SELECT * FROM yilu_park.usr_privilege WHERE url LIKE '/child/detail';
+
+UPDATE yilu_park.usr_privilege SET url=REPLACE(url, '替换前的值', '替换后的值') WHERE code LIKE "3455-01-01%";
+UPDATE yilu_park.usr_privilege SET name='添加', menu_label='添加', target=NULL, remarks=NULL, modify_time=NULL WHERE (code='1aaad2af09c5f7dbe718014f4626a6b8');
