@@ -1,4 +1,11 @@
 
+# 关闭ubuntu弹窗报告
+sudo vim /etc/default/apport
+enabled=1改为enabled=0
+
+# 修改ip地址
+ifconfig eth0 192.168.14.200 netmask 255.255.255.0
+
 pip3 install pycrypto
 
 地址: http://59.49.31.198:8017/EnjoyApiQqwCard/Enjoy/Service
@@ -150,19 +157,7 @@ scp /home/ubuntu/PycharmProjects/LuQiao/parking2.0/ice_feature/7_Ice_test/client
 ssh -6 root@2001:19f0:5:3c79:5400:01ff:fed7:93dc%wlp5s0
 
 # ----- 将 python 编译成 so 文件 -------
-/home/ubuntu/.pyenv/versions/3.6.6/envs/parking36env/bin/
-/home/ubuntu/Env/parkingPy27env/bin/cython handle_mysql.py
-gcc -c -fPIC -I /usr/include/python2.7/ handle_mysql.c
-gcc -shared handle_mysql.o -o handle_mysql.so
-# ----- 汇总 --- 使用python2 ----
-cd /home/ubuntu/PycharmProjects/LuQiao/parking2.0/appweb/plugins/so_src_file && cython handle_mysql.py && gcc -c -fPIC -I /usr/include/python2.7/ handle_mysql.c && gcc -shared handle_mysql.o -o handle_mysql.so && mv handle_mysql.so ../ && rm handle_mysql.o handle_mysql.c
-# ----- 汇总 --- 使用python3 ----
-cd /home/ubuntu/PycharmProjects/LuQiao/parking2.0/appweb/plugins/so_src_file && /home/ubuntu/.pyenv/versions/3.6.6/envs/parking36env/bin/cython handle_mysql.py && gcc -c -fPIC -I /usr/include/python3.6/ handle_mysql.c && gcc -shared handle_mysql.o -o handle_mysql.so && mv handle_mysql.so ../ && rm handle_mysql.o handle_mysql.c
-
-/home/ubuntu/.pyenv/versions/3.6.6/envs/parking36env/bin/cython handle_mysql.py
-gcc -c -fPIC -I /usr/include/python3.6/ handle_mysql.c
-gcc -shared handle_mysql.o -o handle_mysql.so
-mv handle_mysql.so ../
+cd /home/ubuntu/PycharmProject/parking2.0/appweb/plugins/so_src_file && /home/ubuntu/Env_python/parkingPy3Env/bin/cython handle_mysql.py && gcc -c -fPIC -I /usr/include/python3.6/ handle_mysql.c && gcc -shared handle_mysql.o -o handle_mysql.so && mv handle_mysql.so ../ && rm handle_mysql.o handle_mysql.c
 
 
 123456 -> e10adc3949ba59abbe56e057f20f883e
@@ -192,18 +187,12 @@ mysql > repair table tablename  --修复表
 https://pvp.qq.com/cp/a20161115tyf/page1.shtml
 
 
-
-http://0.0.0.0:8000/parking2/
-
-rm -rf /home/ubuntu/PycharmProjects/LuQiao/parking2.0/appweb/static/computer && rm -rf /home/ubuntu/PycharmProjects/LuQiao/parking2.0/appweb/templates/computer/index.html && cp ~/Documents/share/company/云停2.0/林亮/appweb/static/computer /home/ubuntu/PycharmProjects/LuQiao/parking2.0/appweb/static/computer -r && cp  ~/Documents/share/company/云停2.0/林亮/appweb/templates/computer/index.html /home/ubuntu/PycharmProjects/LuQiao/parking2.0/appweb/templates/computer/
-
 rm -rf .git .gitignore .idea && find ./ -name "*.pyc" | xargs rm
 gunicorn manage:appWeb -c gunicorn_info.py
-192.168.14.200
 
-ifconfig eth0 192.168.14.200 netmask 255.255.255.0
 
 SELECT * FROM yilu_park.usr_privilege WHERE url LIKE '/child/detail';
 
 UPDATE yilu_park.usr_privilege SET url=REPLACE(url, '替换前的值', '替换后的值') WHERE code LIKE "3455-01-01%";
 UPDATE yilu_park.usr_privilege SET name='添加', menu_label='添加', target=NULL, remarks=NULL, modify_time=NULL WHERE (code='1aaad2af09c5f7dbe718014f4626a6b8');
+
