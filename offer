@@ -1,5 +1,0 @@
-Docker组件(C/S)
-
-- Docker Client: Docker 的客户端
-- Docker Server: Docker deamon 的组要组曾部分, 接受用户通过Docker Client发送的请求, 并按照相应的路由规则实现路由分发
-- Docker Registry: Registry是Docker镜像的中央存储仓库(pull/push)
