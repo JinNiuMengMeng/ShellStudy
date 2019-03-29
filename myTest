@@ -103,7 +103,7 @@ done
 ?: 零次或一次 {0, 1}
 
 逻辑
-|: 或; 匹配a或者b (a|b)
+`|: 或; 匹配a或者b (a`|b)
 
 
 http://archive.cloudera.com/cdh5/cdh/5/
@@ -117,7 +117,7 @@ supervisord -c /etc/supervisord.conf
 ---------------localhost------------------
 /home/ubuntu/Env/myPy3/bin/uwsgi --ini /home/ubuntu/PycharmProjects/logFilter/uwsgi/uwsgi.ini
 
-rm -rf ~/Documents/share/temp/logFilter && find ~/PycharmProjects/logFilter/ -name "*.pyc" | xargs rm -rf && find ~/PycharmProjects/logFilter/ -name "data" | xargs rm -rf && find ~/PycharmProjects/logFilter/ -name "__pycache" | xargs rm -rf && cp ~/PycharmProjects/logFilter ~/Documents/share/temp -r && rm -rf ~/Documents/share/temp/logFilter/.idea && rm -rf ~/Documents/share/temp/logFilter/.git && echo "" > /home/ubuntu/PycharmProjects/logFilter/app/main/feauter/tempFile && rm -rf /home/ubuntu/PycharmProjects/logFilter/app/main/feauter/temp/ && mkdir -p /home/ubuntu/PycharmProjects/logFilter/app/main/feauter/temp
+rm -rf ~/Documents/share/temp/logFilter && find ~/PycharmProjects/logFilter/ -name "*.pyc" `| xargs rm -rf && find ~/PycharmProjects/logFilter/ -name "data" `| xargs rm -rf && find ~/PycharmProjects/logFilter/ -name "__pycache" `| xargs rm -rf && cp ~/PycharmProjects/logFilter ~/Documents/share/temp -r && rm -rf ~/Documents/share/temp/logFilter/.idea && rm -rf ~/Documents/share/temp/logFilter/.git && echo "" > /home/ubuntu/PycharmProjects/logFilter/app/main/feauter/tempFile && rm -rf /home/ubuntu/PycharmProjects/logFilter/app/main/feauter/temp/ && mkdir -p /home/ubuntu/PycharmProjects/logFilter/app/main/feauter/temp
 
 
 ---------------server-------------------
@@ -134,11 +134,11 @@ sed -r -i "/-log.*/d" /opt/logFilter/app/main/feauter/tempFile
 /usr/local/python3/py2env/bin/python2 /usr/local/python3/py2env/bin/supervisord -c /usr/local/python3/supervisor/supervisord.conf
 
 # ---- supervisorctl 控制命令 ----
-/usr/local/python3/py2env/bin/supervisorctl status|start|stop|restart
+/usr/local/python3/py2env/bin/supervisorctl status`|start`|stop`|restart
 /usr/local/python3/py2env/bin/supervisorctl -c /usr/local/python3/supervisor/supervisord.conf
 
 # ---- 关闭 supervisord 与 uwsgi, 并删掉 supervisor.sock 否则无法启动 ----
-ps -aux | grep "supervisord" |grep -v grep| cut -c 9-15 | xargs kill -9; ps -aux | grep "uwsgi" |grep -v grep| cut -c 9-15 | xargs kill -9; rm -rf /tmp/supervisor.sock; rm -rf /opt/logFilter/uwsgi/uwsgi.pid
+ps -aux `| grep "supervisord" `|grep -v grep`| cut -c 9-15 `| xargs kill -9; ps -aux `| grep "uwsgi" `|grep -v grep`| cut -c 9-15 `| xargs kill -9; rm -rf /tmp/supervisor.sock; rm -rf /opt/logFilter/uwsgi/uwsgi.pid
 
 
 sudo /home/ubuntu/Env/myPy3/bin/pip install -i https://pypi.douban.com/simple/
@@ -171,23 +171,10 @@ curl -4sSkL https://www.baidu.com
 172.16.52.35  3306，账号密码: yilupark/yilupark
 
 
-MySQL常用存储引擎之MyISAM
-MySQL5.5之前的版本默认存储引擎就是MyISAM(系统表与临时表均为MyISAM)
-临时表: 在排序/分组等操作中, 当数量超过一定的大小之后, 由查询优化器建立的临时表
-
-MyISAM存储引擎表有MYD和MYI组成
-MyISAM特性
-1 并发性与锁级别
-(表级锁, 不是行级锁, 这就意味着对表中的数据进行修改时, 需要对整个表进行上锁, 在读取数据时也需要加上共享锁, 读写互斥-并发性不好, 如果是全是读操作时, 性能基本不受影响, 因为共享锁不会阻塞共享锁)
-2 表损坏修复
-mysql > check table tablename   --检查表
-mysql > repair table tablename  --修复表
-(由于意外关闭而损坏的MyISAM表进行的检查和修复操作, 这里的修复并不是事务修复, 因为MyISAM并不是事务型修复引擎, 因此该修复操作可能会造成数据丢失)
-
 https://pvp.qq.com/cp/a20161115tyf/page1.shtml
 
 
-rm -rf .git .gitignore .idea && find ./ -name "*.pyc" | xargs rm
+rm -rf .git .gitignore .idea && find ./ -name "*.pyc" `| xargs rm
 gunicorn manage:appWeb -c gunicorn_info.py
 
 
@@ -195,4 +182,12 @@ SELECT * FROM yilu_park.usr_privilege WHERE url LIKE '/child/detail';
 
 UPDATE yilu_park.usr_privilege SET url=REPLACE(url, '替换前的值', '替换后的值') WHERE code LIKE "3455-01-01%";
 UPDATE yilu_park.usr_privilege SET name='添加', menu_label='添加', target=NULL, remarks=NULL, modify_time=NULL WHERE (code='1aaad2af09c5f7dbe718014f4626a6b8');
+
+
+http://192.168.14.222:8000/parking2/static/computer/img/tmbg-white.png
+http://192.168.14.222:8000/static/computer/img/tmbg-white.png
+
+/home/ubuntu/Env_python/parkingPy3Env/bin/gunicorn
+ manage:appWeb -c /home/ubuntu/PycharmProject/parking2.0/gunicorn_info.py
+
 
