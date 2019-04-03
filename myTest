@@ -1,5 +1,5 @@
 
-# 关闭ubuntu弹窗报告
+# 关闭ubuntu弹窗错误报告
 sudo vim /etc/default/apport
 enabled=1改为enabled=0
 
@@ -7,51 +7,6 @@ enabled=1改为enabled=0
 ifconfig eth0 192.168.14.200 netmask 255.255.255.0
 
 pip3 install pycrypto
-
-地址: http://59.49.31.198:8017/EnjoyApiQqwCard/Enjoy/Service
-应用程序编码(UserNo): F4D35A54-555B-4B1F-8771-2899990F3B1C
-主密钥: 10880080
-
-http://59.49.31.198:8017/EnjoyApiQqwCard/Enjoy/Service
-
-ssh://git@172.16.52.50:10022/iparking/iparking-point-adapter.git
-
-"totalPoints":"" # int	用户总的可用积分
-"pointsFee":""   # int	总积分可抵用金额，单位: 分。
-"avgPoints":""   # int	每抵1块钱所要使用的积分值
-
-["telNo","memCardNo","payClass","parkId","parkName","pointType","payType","feeNo","feeTime","plateNo","plateColor","totalFee","points","pointsFee","totalPoints","totalPointsFee"]
-
-strCustNo  顾客编码   字符串  是  卡号和顾客编码不能同时为空
-decScore   积分       数字   是
-strType    类型     字符串    是   可选值有: 手工增加总积分,手工增加已用积分,手工增加已减积分,手工调增总积分,手工调增已用积分,手工调增已减积分,消费加积分,积分付款。注意: 如果为空，则默认是消费加积分
-
-i车位
-telNo	是	string	用户11位手机号码
-memCardNo	是	string	会员账号
-payClass	是	int	1-临时停车缴费，2-月租缴费
-parkId	是	int	停车场标识
-parkName	是	int	停车场名称信息
-pointType	是	string	积分类型
-				iparking-i车位积分
-				xmjfc-厦门建发积分
-payType	是	int	I车位支付类型: 33-微信支付，32-支付宝支付，34-余额支付
-feeNo	是	string	交易流水号，i车位唯一定单号
-feeTime	是	date	支付时间
-plateNo	是	string	车牌号码
-plateColor	是	string	车牌颜色
-totalFee	是	int	单位: 分，本次交易总金额
-points	是	int	本次抵扣积分值，根据停车费用进行换算，如果积分换算金额超过本次费用总金额，则根据实际总金额换算出需要使用的实际积分值。
-pointsFee	是	int	单位: 分，本次使用积分抵扣的金额
-totalPoints	是	int	本次取得积分接口所得到的总积分值。即iparkingPointsInfoByTelno接口所取得可用的总积分
-totalPointsFee	是	int	本次取得积分接口所得到的总积分值。即iparkingPointsInfoByTelno接口所取得可用的pointsFee
-
-
-1.积分兑换时，要求可以自选档位。(250积分兑换30分钟，500积分兑换60分钟，以此类推，250为一个档，一次最多兑换1500积分)
-2.一次通行只能兑换一次。一次通行中，即使只一次只兑换了500积分，无法再一次兑换1000积分
-3.自然日24小时内多次入场，只允许兑换抵用2次，无法使用三次及以上积分抵扣
-4.夜间(22: 00(含)-次日7: 30)入场的车辆，不允许兑换积分
-
 
 *  *  * *  *   My Command
 分 时 日 月 周   要运行的命令
@@ -109,25 +64,11 @@ done
 http://archive.cloudera.com/cdh5/cdh/5/
 
 
-如果使用pip安装的 supervisor
-echo_supervisord_conf > /etc/supervisord.conf
-supervisord -c /etc/supervisord.conf
-
-
 ---------------localhost------------------
 /home/ubuntu/Env/myPy3/bin/uwsgi --ini /home/ubuntu/PycharmProjects/logFilter/uwsgi/uwsgi.ini
 
-rm -rf ~/Documents/share/temp/logFilter && find ~/PycharmProjects/logFilter/ -name "*.pyc" `| xargs rm -rf && find ~/PycharmProjects/logFilter/ -name "data" `| xargs rm -rf && find ~/PycharmProjects/logFilter/ -name "__pycache" `| xargs rm -rf && cp ~/PycharmProjects/logFilter ~/Documents/share/temp -r && rm -rf ~/Documents/share/temp/logFilter/.idea && rm -rf ~/Documents/share/temp/logFilter/.git && echo "" > /home/ubuntu/PycharmProjects/logFilter/app/main/feauter/tempFile && rm -rf /home/ubuntu/PycharmProjects/logFilter/app/main/feauter/temp/ && mkdir -p /home/ubuntu/PycharmProjects/logFilter/app/main/feauter/temp
-
-
 ---------------server-------------------
 # ---- 手动启动测试 ----
-/usr/local/python3/py3env/bin/uwsgi --ini /opt/logFilter/uwsgi/uwsgi.ini
-
-# ---- supervisord 需要加载的 command 脚本 start ----
-rm -rf /opt/logFilter/app/main/feauter/temp
-mkdir -p /opt/logFilter/app/main/feauter/temp
-sed -r -i "/-log.*/d" /opt/logFilter/app/main/feauter/tempFile
 /usr/local/python3/py3env/bin/uwsgi --ini /opt/logFilter/uwsgi/uwsgi.ini
 
 # ---- supervisord 启动命令 ----
@@ -139,9 +80,6 @@ sed -r -i "/-log.*/d" /opt/logFilter/app/main/feauter/tempFile
 
 # ---- 关闭 supervisord 与 uwsgi, 并删掉 supervisor.sock 否则无法启动 ----
 ps -aux `| grep "supervisord" `|grep -v grep`| cut -c 9-15 `| xargs kill -9; ps -aux `| grep "uwsgi" `|grep -v grep`| cut -c 9-15 `| xargs kill -9; rm -rf /tmp/supervisor.sock; rm -rf /opt/logFilter/uwsgi/uwsgi.pid
-
-
-sudo /home/ubuntu/Env/myPy3/bin/pip install -i https://pypi.douban.com/simple/
 
 scp /home/ubuntu/PycharmProjects/LuQiao/parking2.0/ice_feature/7_Ice_test/clientiCatBo7.py root@192.168.14.137:/opt/
 
@@ -156,38 +94,19 @@ scp /home/ubuntu/PycharmProjects/LuQiao/parking2.0/ice_feature/7_Ice_test/client
 
 ssh -6 root@2001:19f0:5:3c79:5400:01ff:fed7:93dc%wlp5s0
 
-# ----- 将 python 编译成 so 文件 -------
-cd /home/ubuntu/PycharmProject/parking2.0/appweb/plugins/so_src_file && /home/ubuntu/Env_python/parkingPy3Env/bin/cython handle_mysql.py && gcc -c -fPIC -I /usr/include/python3.6/ handle_mysql.c && gcc -shared handle_mysql.o -o handle_mysql.so && mv handle_mysql.so ../ && rm handle_mysql.o handle_mysql.c
-
-
-123456 -> e10adc3949ba59abbe56e057f20f883e
 
 pip2 install -i https://pypi.douban.com/simple/ flask_socketio
 pip2 install -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com  包名
 
 pip3 list --format=columns
 
-curl -4sSkL https://www.baidu.com
-172.16.52.35  3306，账号密码: yilupark/yilupark
-
 
 https://pvp.qq.com/cp/a20161115tyf/page1.shtml
 
-
-rm -rf .git .gitignore .idea && find ./ -name "*.pyc" `| xargs rm
-gunicorn manage:appWeb -c gunicorn_info.py
-
-
-SELECT * FROM yilu_park.usr_privilege WHERE url LIKE '/child/detail';
 
 UPDATE yilu_park.usr_privilege SET url=REPLACE(url, '替换前的值', '替换后的值') WHERE code LIKE "3455-01-01%";
 UPDATE yilu_park.usr_privilege SET name='添加', menu_label='添加', target=NULL, remarks=NULL, modify_time=NULL WHERE (code='1aaad2af09c5f7dbe718014f4626a6b8');
 
 
-http://192.168.14.222:8000/parking2/static/computer/img/tmbg-white.png
-http://192.168.14.222:8000/static/computer/img/tmbg-white.png
-
-/home/ubuntu/Env_python/parkingPy3Env/bin/gunicorn
- manage:appWeb -c /home/ubuntu/PycharmProject/parking2.0/gunicorn_info.py
-
-
+usky05922226199@%
+05922226199
