@@ -107,6 +107,48 @@ https://pvp.qq.com/cp/a20161115tyf/page1.shtml
 UPDATE yilu_park.usr_privilege SET url=REPLACE(url, '替换前的值', '替换后的值') WHERE code LIKE "3455-01-01%";
 UPDATE yilu_park.usr_privilege SET name='添加', menu_label='添加', target=NULL, remarks=NULL, modify_time=NULL WHERE (code='1aaad2af09c5f7dbe718014f4626a6b8');
 
+# scp 指定端口
+scp -P 63737 -r xxx root@192.168.0.151:/usr/local/spm-api/
 
-usky05922226199@%
-05922226199
+# 重启网络
+sudo /etc/init.d/networking restart && sudo /etc/init.d/network-manager restart
+
+------------------------------temp------------------------
+17楼wifi密码: usky05922226199@%
+15楼WiFi密码: 05922226199
+svn账号密码: xiezh   
+analysis地址: svn://192.168.0.212/cdnrepo/02-code/gslb-analysis-api
+spm地址: 
+151数据库: mysql -uusky -pusky@123456
+docker机: root  usky666!#%
+
+
+数据库移植并初始化: 
+python manage.py makemigrations --settings settings.prod
+python manage.py migrate --settings settings.prod
+python manage.py init_apis --settings settings.prod
+
+gunicorn -w 1 -b 0.0.0.0:9988 wsgi:application --access-logfile "/usr/local/spm-api/var/log/gunicorn-access.log" --error-logfile "/usr/local/spm-api/var/log/gunicorn-error.log" --log-level info --worker-class gevent
+
+
+sudo /etc/init.d/networking restart && sudo /etc/init.d/network-manager restart
+
+App_service
+Logical_group
+Logical_servicesdf
+
+
+gunicorn -w 1 -b 0.0.0.0:9988 wsgi:application --access-logfile /usr/local/spm-api/var/log/gunicorn-access.log --error-logfile /usr/local/spm-api/var/log/gunicorn-error.log --log-level info --worker-class gevent
+
+
+docker run --privileged=true -d --name=MyCentos7 -p 9988:9988 -p 63737:22 -p 3307:3306 -p 80:80 wahaha00/my-centos-7-ssh:v2.0 /usr/sbin/init
+docker exec -it MyCentos7 /bin/bash
+
+
+./deploy.sh --domain=analysis-api.uskycdn.com --env=prod
+
+
+pkill -9 gunicorn ; source /data/spm/bin/activate && cd /usr/local/spm-api/bin/spm/ && gunicorn -w 1 -b 0.0.0.0:9988 wsgi:application --access-logfile /usr/local/spm-api/var/log/gunicorn-access.log --error-logfile /usr/local/spm-api/var/log/gunicorn-error.log --log-level info --worker-class gevent
+
+
+
