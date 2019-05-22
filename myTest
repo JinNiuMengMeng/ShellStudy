@@ -43,23 +43,16 @@ for((i=0; i<=50;i++));do
 done
 
 
-正则:
+ubuntu编译安装python27
+./configure --prefix=路径
 
-空行: ^$
+如果报错 zipimport.ZipImportError: can't decompress data; zlib not available
+解决方法: $ sudo apt-get install zlib1g-dev
 
-元字符(代表普通字符或者特殊字符)
-\w: 匹配任何字类字符, 包括下划线([A-Za-z0-9])
-\W: 匹配任何非字类字符. ([^A-Za-z0-9])
-\b: 代表单词的分隔
+报错Can’t connect to HTTPS URL because the SSL module is not available
+解决办法: $ sudo apt-get install libssl-dev openssl
 
-重复
-*: 零次或多次 {0,}
-+: 一次或多次 {1,}
-?: 零次或一次 {0, 1}
-
-逻辑
-`|: 或; 匹配a或者b (a`|b)
-
+libmysqlclient-dev mysql-dev python-dev python-mysqldb libssl-dev
 
 http://archive.cloudera.com/cdh5/cdh/5/
 
@@ -121,7 +114,8 @@ analysis地址: svn://192.168.0.212/cdnrepo/02-code/gslb-analysis-api
 spm地址: 
 151数据库: mysql -uusky -pusky@123456
 docker机: root  usky666!#%
-
+堡垒机账号: xiezh  xiezhaoheng
+mysql -h 103.118.36.210 -u usky -pusky@123456
 
 数据库移植并初始化: 
 python manage.py makemigrations --settings settings.prod
