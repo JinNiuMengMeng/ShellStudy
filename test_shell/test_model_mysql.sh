@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 DATABASE="spm"
 MYSQL_USER="usky"

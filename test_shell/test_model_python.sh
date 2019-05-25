@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 PACKAGES_DIR=/tmp/packages
 
 function install_pip()

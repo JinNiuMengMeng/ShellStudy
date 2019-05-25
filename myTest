@@ -140,7 +140,11 @@ docker exec -it MyCentos7 /bin/bash
 
 
 ./deploy.sh --domain=analysis-api.uskycdn.com --env=prod
+./deploy.sh --domain spm-api.uskycdn.com --env prod
 
 
 pkill -9 gunicorn; source /data/spm/bin/activate && cd /usr/local/spm-api/bin/spm/ && gunicorn -w 1 -b 0.0.0.0:9988 wsgi:application --access-logfile /usr/local/spm-api/var/log/gunicorn-access.log --error-logfile /usr/local/spm-api/var/log/gunicorn-error.log --log-level info --worker-class gevent
 
+chmod 777 /usr/local/spm-api/misc/* -R
+
+mysql -uroot -pusky@456321 -e "delete from mysql.user where User='usky';" && mysql -uroot -pusky@456321 -e "drop database spm;"
