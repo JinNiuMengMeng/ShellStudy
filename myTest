@@ -6,6 +6,9 @@ enabled=1改为enabled=0
 # 修改ip地址
 ifconfig eth0 192.168.14.200 netmask 255.255.255.0
 
+# 查看wifi下的所有设备IP地址
+sudo arp-scan -interface wlp5s0 --localnet
+
 pip3 install pycrypto
 
 *  *  * *  *   My Command
