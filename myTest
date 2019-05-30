@@ -9,6 +9,10 @@ ifconfig eth0 192.168.14.200 netmask 255.255.255.0
 # 查看wifi下的所有设备IP地址
 sudo arp-scan -interface wlp5s0 --localnet
 
+# Appimage 版本微信
+# https://github.com/JinNiuMengMeng/electron-wechat
+
+
 pip3 install pycrypto
 
 *  *  * *  *   My Command
@@ -112,7 +116,7 @@ sudo /etc/init.d/networking restart && sudo /etc/init.d/network-manager restart
 ------------------------------temp------------------------
 17楼wifi密码: usky05922226199@%
 15楼WiFi密码: 05922226199
-svn账号密码: xiezh   
+svn账号密码: xiezh   ytkj@Xzh239@
 analysis地址: svn://192.168.0.212/cdnrepo/02-code/gslb-analysis-api
 spm地址: 
 151数据库: mysql -uusky -pusky@123456
@@ -143,13 +147,22 @@ docker exec -it MyCentos7 /bin/bash
 
 
 ./deploy.sh --domain=analysis-api.uskycdn.com --env=prod
-./deploy.sh --domain spm-api.uskycdn.com --env prod
+./deploy.sh --domain spm-api.uskycdn.com --env prod --dbhost 127.0.0.1
+./deploy.sh --domain spm-api.uskycdn.com --env prod --dbhost mysql.spm.uskycdn.com
 
 
-pkill -9 gunicorn; source /data/spm/bin/activate && cd /usr/local/spm-api/bin/spm/ && gunicorn -w 1 -b 0.0.0.0:9988 wsgi:application --access-logfile /usr/local/spm-api/var/log/gunicorn-access.log --error-logfile /usr/local/spm-api/var/log/gunicorn-error.log --log-level info --worker-class gevent
+pkill -9 gunicorn; source /data/spm/bin/activate && cd /usr/local/spm-api/bin/spm/ && gunicorn -w 1 -b 0.0.0.0:9988 wsgi:application --error-logfile /usr/local/spm-api/var/log/gunicorn-error.log --log-level info --worker-class gevent
 
 chmod 777 /usr/local/spm-api/misc/* -R
 
 mysql -uroot -pusky@456321 -e "delete from mysql.user where User='usky';" && mysql -uroot -pusky@456321 -e "drop database spm;"
 
-
+{
+    "name": "eqqqq",
+    "state": "1",
+    "logical_group_name": "test",
+    "physical_server_name": "test",
+    "app_service_name": "test",
+    "version": "test",
+    "remark": "12345346534563456",
+}
