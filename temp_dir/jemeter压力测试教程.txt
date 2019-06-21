@@ -1,0 +1,23 @@
+一. 常用压力测试工具对比
+    1. loadrunner 性能稳定, 压测结果以及细粒度大, 可以自定义脚本进行压测, 但是太过于重大, 功能比较繁多
+    2. apache ab(单接口压最方便), 模拟多线程并发请求, ab命令对发出负载的计算机要求很低, 既不会占用及很多cpu, 也不会占用很多内存, 但却或给目标服务器造成巨大的负载, 简单DDOS攻击等
+    3. webbench, 首先fork出很多子进程, 每个子进程都循环做web访问测试, 子进程把访问的结果通过pipe告诉父进程, 父进程做最终的统计结果
+
+二. Jmeter基本介绍和使用场景
+    1. 压测不同的协议和应用
+		1) Web-Http, HTTPS(Java, NodeJs, PHP, ASP.NET, ...)
+		2) SOAP/REST Webservices
+		3) FTP
+		4) Database via JDBC
+		5) LDAP 轻量目录访问协议
+		6) Message-oriented middleware (MoM) via JMS
+		7) Mail_SMTP(S),POP3(S)andIMAP(s)
+		8) TCP等等
+	2. 使用场景及优点
+		1) 功能测试
+		2) 压力测试
+		3) 分布式压力测试
+		4) 纯java开发
+		5) 上手容易，高性能
+		4) 提供测试数据分析
+		5) 各种报表数据图形展示

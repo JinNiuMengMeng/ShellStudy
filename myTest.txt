@@ -112,9 +112,6 @@ scp -P 63737 -r xxx root@192.168.0.151:/usr/local/spm-api/
 # 重启网络
 sudo /etc/init.d/networking restart && sudo /etc/init.d/network-manager restart
 
-赛斯因弗，回复“woodpecker”或者获得woodpecker下载链接。
-
-
 ------------------------------temp------------------------
 17楼wifi密码: usky05922226199@%
 15楼WiFi密码: 05922226199
@@ -164,12 +161,9 @@ mysql -uroot -pusky@456321 -e "delete from mysql.user where User='usky';" && mys
 ab -k -n 1000 -c 500 -T "application/json" -H "Content-Type: application/json" -H "X-CSRFToken: zBKfCPmleFrh6FMnlQibr8G1LGT27leJGxf9GvV77WtOsYKgKTPvmENt9AC2txLu" -H "Authorization: Token ZWE0Njc2YTY2MDQyMzEzZjMxMmQ5NjcwYmQ0OGU2ZTc" "http://192.168.0.151:9988/api/1.0.0/cache-groups/"
 
 
-ab -k -n 1000 -c 100 -T "application/json" -H "Content-Type: application/json" -H "X-CSRFToken: 8WbyQ4lbayrUs1b80FBQj27Z0N72hky2hFIvRj86Mt6zQxAViLy3uTMDxx5toovb" -H "Authorization: Token MjUxZjFiY2ZkNGVlNjhhMThiMDk4NjAyZDhkNjhmYTY" "http://192.168.0.155:9988/api/1.0.0/cache-groups/"
+ab -k -n 500 -c 500 -T "application/json" -H "Content-Type: application/json" -H "X-CSRFToken: IWsgjb3W3fE4Z9K6tJNrPoUgADDtCOdGPSXanRCIWwGBlsIZSMkLKU1IYxmtY0Kr" -H "Authorization: Token MmMyNDEyYzdiOThmZDZkZDE0YjM3ZjgyOTc0MWVkOTM" "http://192.168.0.155:9988/api/1.0.0/cache-groups/"
 
-
-
-curl -X GET --header 'Accept: application/json' --header 'X-CSRFToken: zBKfCPmleFrh6FMnlQibr8G1LGT27leJGxf9GvV77WtOsYKgKTPvmENt9AC2txLu' --header 'Authorization: Token ZWE0Njc2YTY2MDQyMzEzZjMxMmQ5NjcwYmQ0OGU2ZTc' 'http://192.168.0.151:9988/api/1.0.0/App_platforms/'
-
+curl -X GET --header 'Accept: application/json' --header 'X-CSRFToken: IWsgjb3W3fE4Z9K6tJNrPoUgADDtCOdGPSXanRCIWwGBlsIZSMkLKU1IYxmtY0Kr' --header 'Authorization: Token MmMyNDEyYzdiOThmZDZkZDE0YjM3ZjgyOTc0MWVkOTM' 'http://192.168.0.151:9988/api/1.0.0/cache-groups/'
 
 151服务器, mysql最大连接数500
 gunicorn worker=8, 总请求数量1000, 并发500, 失败数1, 总耗时21s
@@ -203,22 +197,4 @@ def get_third_party_api_from_redis(cls, **kwargs):
         return data_obj
 
 
-curl -X GET --header 'Accept: application/json' --header 'X-CSRFToken: 6izuE5SkimHz1R8tzGIBKKG7JYJihO3Nf16rFkFfUhmepnxgRMFOVBlLgIHJoS0W' --header 'Authorization: Token MzYxNDIwNjc5NTI4MjU0NDk5ZTYyOTA5NjE0NjFiNGU' 'http://192.168.0.155:9988/api/1.0.0/cache-groups/'
-
-
-集群管理接口开发
-应用管理接口开发
-编写完善spm项目的安装、卸载和部署脚本
-
-爬取加速站点源站
-
-用户登录认证接口的实现
-梳理parse_log流程
-insert_query_log流程梳理
-梳理system流程
-梳理query流程
-梳理account流程
-梳理整个项目的流程，流程图体现
-熟悉整个项目的安装部署流程
-压测spm接口，特别是all-cache接口
-
+curl -X GET --header 'Accept: application/json' --header 'X-CSRFToken: o3mtsxVX9HYyuR2pHjTUYLNJ5gjmhApppwmRjMBLfxXAHef0fWcqs1193ISntwYG' --header 'Authorization: Token NDUzMzQ4ZjIxMjFjMjIxOGE5NDJmOThiN2IzMTg2MDk' 'http://192.168.0.154:9988/api/1.0.0/Srss/'
