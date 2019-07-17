@@ -11,6 +11,8 @@ sudo arp-scan -interface wlp5s0 --localnet
 # Appimage 版本微信
 # https://github.com/JinNiuMengMeng/electron-wechat
 
+# 正则匹配中文
+[\u4E00-\u9FFF]
 
 pip3 install pycrypto
 
@@ -130,6 +132,7 @@ mysql -h 103.118.36.210 -u usky -pusky@123456
 python manage.py makemigrations --settings settings.prod
 python manage.py migrate --settings settings.prod
 python manage.py init_apis --settings settings.prod
+python manage.py get_info --settings settings.prod
 
 gunicorn -w 1 -b 0.0.0.0:9988 wsgi:application --access-logfile "/usr/local/spm-api/var/log/gunicorn-access.log" --error-logfile "/usr/local/spm-api/var/log/gunicorn-error.log" --log-level info --worker-class gevent
 
@@ -153,9 +156,9 @@ docker exec -it MyCentos7 /bin/bash
 ./deploy.sh --domain spm-api.uskycdn.com --env prod --dbhost mysql.spm.uskycdn.com
 
 
-echo "" > /usr/local/spm-api/var/log/gunicorn-access.log && echo "" > /usr/local/spm-api/var/log/gunicorn-error.log && echo "" > /usr/local/spm-api/var/log/account.log && pkill -9 gunicorn; source /data/spm/bin/activate && cd /usr/local/spm-api/bin/spm/ && find ./ -name "*.pyc" | xargs rm && gunicorn -w 1 -b 0.0.0.0:9988 wsgi:application  --access-logfile /usr/local/spm-api/var/log/gunicorn-access.log --error-logfile /usr/local/spm-api/var/log/gunicorn-error.log --log-level info --worker-class gevent
+echo "" > /usr/local/spm-api/var/log/gunicorn-access.log && echo "" > /usr/local/spm-api/var/log/gunicorn-error.log && echo "" > /usr/local/spm-api/var/log/account.log && pkill -9 gunicorn; source /data/spm/bin/activate && cd /usr/local/spm-api/bin/spm/ && find ./ -name "*.pyc" | xargs rm; gunicorn -w 8 -b 0.0.0.0:9988 wsgi:application  --access-logfile /usr/local/spm-api/var/log/gunicorn-access.log --error-logfile /usr/local/spm-api/var/log/gunicorn-error.log --log-level info --worker-class gevent
 
-pkill -9 gunicorn; source /data/spm/bin/activate && cd /usr/local/spm-api/bin/spm/ && find ./ -name "*.pyc" | xargs rm && gunicorn -w 1 -b 0.0.0.0:9988 wsgi:application --error-logfile /usr/local/spm-api/var/log/gunicorn-error.log --log-level info --worker-class gevent
+pkill -9 gunicorn; source /data/spm/bin/activate && cd /usr/local/spm-api/bin/spm/ && find ./ -name "*.pyc" | xargs rm; gunicorn -w 1 -b 0.0.0.0:9988 wsgi:application --error-logfile /usr/local/spm-api/var/log/gunicorn-error.log --log-level info --worker-class gevent
 
 
 mysql -uroot -pusky@456321 -e "delete from mysql.user where User='usky';" && mysql -uroot -pusky@456321 -e "drop database spm;"
@@ -163,62 +166,8 @@ mysql -uroot -pusky@456321 -e "delete from mysql.user where User='usky';" && mys
 
 ab -k -n 1000 -c 500 -T "application/json" -H "Content-Type: application/json" -H "X-CSRFToken: zBKfCPmleFrh6FMnlQibr8G1LGT27leJGxf9GvV77WtOsYKgKTPvmENt9AC2txLu" -H "Authorization: Token ZWE0Njc2YTY2MDQyMzEzZjMxMmQ5NjcwYmQ0OGU2ZTc" "http://192.168.0.151:9988/api/1.0.0/cache-groups/"
 
-
-ab -k -n 1000 -c 100 -T "application/json" -H "Content-Type: application/json" -H "X-CSRFToken: 8WbyQ4lbayrUs1b80FBQj27Z0N72hky2hFIvRj86Mt6zQxAViLy3uTMDxx5toovb" -H "Authorization: Token MjUxZjFiY2ZkNGVlNjhhMThiMDk4NjAyZDhkNjhmYTY" "http://192.168.0.155:9988/api/1.0.0/cache-groups/"
-
-
-
-curl -X GET --header 'Accept: application/json' --header 'X-CSRFToken: zBKfCPmleFrh6FMnlQibr8G1LGT27leJGxf9GvV77WtOsYKgKTPvmENt9AC2txLu' --header 'Authorization: Token ZWE0Njc2YTY2MDQyMzEzZjMxMmQ5NjcwYmQ0OGU2ZTc' 'http://192.168.0.151:9988/api/1.0.0/App_platforms/'
+mysqldump -uusky -pusky@123456 --no-create-info --tab=/tmp RUNOOB runoob_tbl
+mysqldump -h 127.0.0.1 -uusky -pusky@123456 spm > /root/spm_wa.sql
 
 
-151服务器, mysql最大连接数500
-gunicorn worker=8, 总请求数量1000, 并发500, 失败数1, 总耗时21s
-gunicorn worker=8, 总请求数量1000, 并发1000, 失败数0, 总耗时22.6s
-
-
-@classmethod
-def get_third_party_api_from_redis(cls, **kwargs):
-    import yaml
-
-    class Temp_Third(object):
-        def __init__(self, platform, name, url, last_success, last_failure, parameter):
-            self.platform = platform
-            self.name = name
-            self.url = url
-            self.last_success = last_success
-            self.last_failure = last_failure
-            self.parameter = parameter
-
-    res = redis_conn.hget(name="LBDNS", key=kwargs["name"])
-    if res:
-        res = yaml.safe_load(res)
-        res_obj = Temp_Third(res["platform"], res["name"], res["url"], res["last_success"], res["last_failure"], res["parameter"])
-        return res_obj
-    else:
-        data_obj = ThirdPartyAPI.objects.get_or_none(**kwargs)
-        parameter_dcit = dict(data_obj.parameter)
-        data = yaml.safe_dump({"platform": data_obj.platform, "name": data_obj.name, "url": data_obj.url, "parameter": parameter_dcit,
-                               "last_success": data_obj.last_success, "last_failure": data_obj.last_failure})
-        redis_conn.hset(name="LBDNS", key=kwargs["name"], value=data)
-        return data_obj
-
-
-curl -X GET --header 'Accept: application/json' --header 'X-CSRFToken: 6izuE5SkimHz1R8tzGIBKKG7JYJihO3Nf16rFkFfUhmepnxgRMFOVBlLgIHJoS0W' --header 'Authorization: Token MzYxNDIwNjc5NTI4MjU0NDk5ZTYyOTA5NjE0NjFiNGU' 'http://192.168.0.155:9988/api/1.0.0/cache-groups/'
-
-
-集群管理接口开发
-应用管理接口开发
-编写完善spm项目的安装、卸载和部署脚本
-
-爬取加速站点源站
-
-用户登录认证接口的实现
-梳理parse_log流程
-insert_query_log流程梳理
-梳理system流程
-梳理query流程
-梳理account流程
-梳理整个项目的流程，流程图体现
-熟悉整个项目的安装部署流程
-压测spm接口，特别是all-cache接口
-
+cd /usr/local/py/op_cache/test && source /root/virtualenvs/analysis/bin/activate
