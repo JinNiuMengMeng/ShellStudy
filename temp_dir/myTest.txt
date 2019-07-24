@@ -14,6 +14,31 @@ sudo arp-scan -interface wlp5s0 --localnet
 # 正则匹配中文
 [\u4E00-\u9FFF]
 
+# vim 去掉包含networking的行
+%s/.*networking.*\n//g
+
+# bash_history
+: 1558851561:0;git config --global user.name "Xie Zhaoheng"
+: 1558852561:0;git config --global user.email 411317572@qq.com
+: 1558852562:0;git config --list
+: 1558852563:0;git config user.email
+: 1558852564:0;git config user.name
+: 1558853746:0;xprop WM_CLASS
+: 1558859031:0;sudo arp-scan -interface wlp1s0 --localnet
+: 1558859046:0;ssh pi@192.168.43.129
+: 1558945548:0;sed -r "s/\/tmp\//\/var\/run\//g" aa
+: 1559121339:0;sudo dpkg-reconfigure ca-certificates
+: 1559207965:0;/home/ubuntu/pyenv/py3env/bin/jupyter-notebook
+: 1559808467:0;svn revert --recursive .
+: 1559812678:0;sudo ulimit -SHn 65536
+: 1559812808:0;ulimit -n
+: 1560151665:0;redis-cli -h 192.168.0.154
+: 1560303408:0;telnet 103.118.36.248 -p 80
+: 1560758781:0;curl -O -J -L http://oss.dev.youtiankeji.com/csp/cache/domains/certs.tar.gz
+: 1560929261:0;ssh -p 63737 root@192.168.0.248
+: 1563437206:0;sudo /etc/init.d/networking restart && sudo /etc/init.d/network-manager restart
+
+
 pip3 install pycrypto
 
 *  *  * *  *   My Command
@@ -139,11 +164,6 @@ gunicorn -w 1 -b 0.0.0.0:9988 wsgi:application --access-logfile "/usr/local/spm-
 
 sudo /etc/init.d/networking restart && sudo /etc/init.d/network-manager restart
 
-App_service
-Logical_group
-Logical_servicesdf
-
-
 gunicorn -w 1 -b 0.0.0.0:9988 wsgi:application --access-logfile /usr/local/spm-api/var/log/gunicorn-access.log --error-logfile /usr/local/spm-api/var/log/gunicorn-error.log --log-level info --worker-class gevent
 
 
@@ -170,4 +190,20 @@ mysqldump -uusky -pusky@123456 --no-create-info --tab=/tmp RUNOOB runoob_tbl
 mysqldump -h 127.0.0.1 -uusky -pusky@123456 spm > /root/spm_wa.sql
 
 
-cd /usr/local/py/op_cache/test && source /root/virtualenvs/analysis/bin/activate
+insert into ip_to_cv (id, IPHEAD, IPTAIL, country, country_name, province, city, latitude, longitude, mailnum, timezone)values(123434546, 14, 2, "XM", "XiaMen", "FuJianq", "huliq", "as", "a2", "shanghai2", "shanghai1");
+insert into ip_to_cv (id, IPHEAD, IPTAIL, country, country_name, province, city, latitude, longitude, mailnum, timezone)values(122343546, 15, 2, "XM", "XiaMen", "FuJiana", "hulie", "as4", "aa", "shanghai", "shanghai");
+insert into ip_to_cv (id, IPHEAD, IPTAIL, country, country_name, province, city, latitude, longitude, mailnum, timezone)values(123435146, 16, 22, "XM", "XiaMen", "FuJian1s", "huli1", "as3", "b", "shanghai", "shanghai");
+insert into ip_to_cv (id, IPHEAD, IPTAIL, country, country_name, province, city, latitude, longitude, mailnum, timezone)values(123431546, 18, 22, "XM", "XiaMen", "FuJian2", "hulia", "asa", "ac", "shanghai", "shanghai");
+insert into ip_to_cv (id, IPHEAD, IPTAIL, country, country_name, province, city, latitude, longitude, mailnum, timezone)values(1232143546, 18, 25, "XM", "XiaMen", "FuJians", "huliw", "asq", "vc", "shanghai", "shanghai");
+insert into ip_to_cv (id, IPHEAD, IPTAIL, country, country_name, province, city, latitude, longitude, mailnum, timezone)values(123435436, 18, 28, "XM", "XiaMen", "FuJian3", "huliq", "asq", "az", "shanghai", "shanghai");
+
+
+1、sbdc即基础数据中心，主要存储一些基础数据信息，目前先实现三张表：
+ip2locations ip地理库基础模板表、view2pop_static_1(pop的qos表）、ip_to_cv(ip和cv的对照表)
+
+ 
+2、实现三个表的list接口,实现分页和查询功能
+IP地理库根据ip做查询，qos表根据view_id做查询，ip_to_cv根据ip做查询
+
+ 
+3、更新spm的api文档
