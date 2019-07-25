@@ -30,6 +30,8 @@ sudo arp-scan -interface wlp5s0 --localnet
 : 1559121339:0;sudo dpkg-reconfigure ca-certificates
 : 1559207965:0;/home/ubuntu/pyenv/py3env/bin/jupyter-notebook
 : 1559808467:0;svn revert --recursive .
+: 1559808468:0;svn cp -m "创建新的分支xzh" svn://x.x.x.x/spm-api/branches/dev svn://x.x.x.x/spm-api/branches/xzh
+: 1559808469:0;svn merge svn://x.x.x.x/spm-api/branches/xzh
 : 1559812678:0;sudo ulimit -SHn 65536
 : 1559812808:0;ulimit -n
 : 1560151665:0;redis-cli -h 192.168.0.154
@@ -140,7 +142,7 @@ scp -P 63737 -r xxx root@192.168.0.151:/usr/local/spm-api/
 sudo /etc/init.d/networking restart && sudo /etc/init.d/network-manager restart
 
 赛斯因弗，回复“woodpecker”或者获得woodpecker下载链接。
-
+智能触发器和auto js
 
 ------------------------------temp------------------------
 17楼wifi密码: usky05922226199@%
@@ -198,12 +200,6 @@ insert into ip_to_cv (id, IPHEAD, IPTAIL, country, country_name, province, city,
 insert into ip_to_cv (id, IPHEAD, IPTAIL, country, country_name, province, city, latitude, longitude, mailnum, timezone)values(123435436, 18, 28, "XM", "XiaMen", "FuJian3", "huliq", "asq", "az", "shanghai", "shanghai");
 
 
-1、sbdc即基础数据中心，主要存储一些基础数据信息，目前先实现三张表：
-ip2locations ip地理库基础模板表、view2pop_static_1(pop的qos表）、ip_to_cv(ip和cv的对照表)
+innodb_file_per_table
 
- 
-2、实现三个表的list接口,实现分页和查询功能
-IP地理库根据ip做查询，qos表根据view_id做查询，ip_to_cv根据ip做查询
-
- 
-3、更新spm的api文档
+转载请注明来源:Adtuu.com-https://adtuu.com/article/61.htmlmysqldump -h127.0.0.1 -uusky -pusky@123456 --all-databases --add-drop-table > /opt/all_database.sql
