@@ -183,9 +183,6 @@ echo "" > /usr/local/spm-api/var/log/gunicorn-access.log && echo "" > /usr/local
 pkill -9 gunicorn; source /data/spm/bin/activate && cd /usr/local/spm-api/bin/spm/ && find ./ -name "*.pyc" | xargs rm; gunicorn -w 1 -b 0.0.0.0:9988 wsgi:application --error-logfile /usr/local/spm-api/var/log/gunicorn-error.log --log-level info --worker-class gevent
 
 
-mysql -uroot -pusky@456321 -e "delete from mysql.user where User='usky';" && mysql -uroot -pusky@456321 -e "drop database spm;"
-
-
 ab -k -n 1000 -c 500 -T "application/json" -H "Content-Type: application/json" -H "X-CSRFToken: zBKfCPmleFrh6FMnlQibr8G1LGT27leJGxf9GvV77WtOsYKgKTPvmENt9AC2txLu" -H "Authorization: Token ZWE0Njc2YTY2MDQyMzEzZjMxMmQ5NjcwYmQ0OGU2ZTc" "http://192.168.0.151:9988/api/1.0.0/cache-groups/"
 
 mysqldump -uusky -pusky@123456 --no-create-info --tab=/tmp RUNOOB runoob_tbl
@@ -193,13 +190,5 @@ mysqldump -h 127.0.0.1 -uusky -pusky@123456 spm > /root/spm_wa.sql
 
 
 insert into ip_to_cv (id, IPHEAD, IPTAIL, country, country_name, province, city, latitude, longitude, mailnum, timezone)values(123434546, 14, 2, "XM", "XiaMen", "FuJianq", "huliq", "as", "a2", "shanghai2", "shanghai1");
-insert into ip_to_cv (id, IPHEAD, IPTAIL, country, country_name, province, city, latitude, longitude, mailnum, timezone)values(122343546, 15, 2, "XM", "XiaMen", "FuJiana", "hulie", "as4", "aa", "shanghai", "shanghai");
-insert into ip_to_cv (id, IPHEAD, IPTAIL, country, country_name, province, city, latitude, longitude, mailnum, timezone)values(123435146, 16, 22, "XM", "XiaMen", "FuJian1s", "huli1", "as3", "b", "shanghai", "shanghai");
-insert into ip_to_cv (id, IPHEAD, IPTAIL, country, country_name, province, city, latitude, longitude, mailnum, timezone)values(123431546, 18, 22, "XM", "XiaMen", "FuJian2", "hulia", "asa", "ac", "shanghai", "shanghai");
-insert into ip_to_cv (id, IPHEAD, IPTAIL, country, country_name, province, city, latitude, longitude, mailnum, timezone)values(1232143546, 18, 25, "XM", "XiaMen", "FuJians", "huliw", "asq", "vc", "shanghai", "shanghai");
-insert into ip_to_cv (id, IPHEAD, IPTAIL, country, country_name, province, city, latitude, longitude, mailnum, timezone)values(123435436, 18, 28, "XM", "XiaMen", "FuJian3", "huliq", "asq", "az", "shanghai", "shanghai");
 
 
-innodb_file_per_table
-
-转载请注明来源:Adtuu.com-https://adtuu.com/article/61.htmlmysqldump -h127.0.0.1 -uusky -pusky@123456 --all-databases --add-drop-table > /opt/all_database.sql
