@@ -149,6 +149,10 @@ sudo /etc/init.d/networking restart && sudo /etc/init.d/network-manager restart
 15楼WiFi密码: 05922226199
 svn账号密码: xiezh   ytkj@Xzh239@
 analysis地址: svn://192.168.0.212/cdnrepo/02-code/gslb-analysis-api
+svn://192.168.0.212/cdnrepo/02-code/py
+URL: svn://192.168.0.212/cdnrepo/01-docs/API/spm
+URL: svn://192.168.0.212/cdnrepo/02-code/spm-api
+
 spm地址: 
 151数据库: mysql -uusky -pusky@123456
 docker机: root  usky666!#%
