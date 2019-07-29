@@ -129,6 +129,10 @@ scp -P 63737 -r xxx root@192.168.0.151:/usr/local/spm-api/
 # 重启网络
 sudo /etc/init.d/networking restart && sudo /etc/init.d/network-manager restart
 
+pacman-key --init
+pacman-key --populate archlinux
+pacman-key --populate archlinuxcn
+
 ------------------------------temp------------------------
 17楼wifi密码: usky05922226199@%
 15楼WiFi密码: 05922226199
@@ -202,6 +206,7 @@ gunicorn worker=8, 总请求数量1000, 并发1000, 失败数0, 总耗时22.6s
 : 1559121339:0;sudo dpkg-reconfigure ca-certificates
 : 1559207965:0;/home/ubuntu/pyenv/py3env/bin/jupyter-notebook
 : 1559808467:0;svn revert --recursive .
+: 1559808468:0;svn copy svn://127.0.0.1/repos/main svn://127.0.0.1/repos/branch -m "test"
 : 1559812678:0;sudo ulimit -SHn 65536
 : 1559812808:0;ulimit -n
 : 1560151665:0;redis-cli -h 192.168.0.154
@@ -217,3 +222,5 @@ gunicorn worker=8, 总请求数量1000, 并发1000, 失败数0, 总耗时22.6s
 
 
 curl -X GET --header 'Accept: application/json' --header 'X-CSRFToken: o3mtsxVX9HYyuR2pHjTUYLNJ5gjmhApppwmRjMBLfxXAHef0fWcqs1193ISntwYG' --header 'Authorization: Token NDUzMzQ4ZjIxMjFjMjIxOGE5NDJmOThiN2IzMTg2MDk' 'http://192.168.0.154:9988/api/1.0.0/Srss/'
+
+https://www.visualsvn.com/files/Apache-Subversion-1.12.0.zip
