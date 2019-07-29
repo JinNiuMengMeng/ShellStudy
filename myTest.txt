@@ -190,33 +190,30 @@ curl -X GET --header 'Accept: application/json' --header 'X-CSRFToken: IWsgjb3W3
 151服务器, mysql最大连接数500
 gunicorn worker=8, 总请求数量1000, 并发500, 失败数1, 总耗时21s
 gunicorn worker=8, 总请求数量1000, 并发1000, 失败数0, 总耗时22.6s
-
-
-@classmethod
-def get_third_party_api_from_redis(cls, **kwargs):
-    import yaml
-
-    class Temp_Third(object):
-        def __init__(self, platform, name, url, last_success, last_failure, parameter):
-            self.platform = platform
-            self.name = name
-            self.url = url
-            self.last_success = last_success
-            self.last_failure = last_failure
-            self.parameter = parameter
-
-    res = redis_conn.hget(name="LBDNS", key=kwargs["name"])
-    if res:
-        res = yaml.safe_load(res)
-        res_obj = Temp_Third(res["platform"], res["name"], res["url"], res["last_success"], res["last_failure"], res["parameter"])
-        return res_obj
-    else:
-        data_obj = ThirdPartyAPI.objects.get_or_none(**kwargs)
-        parameter_dcit = dict(data_obj.parameter)
-        data = yaml.safe_dump({"platform": data_obj.platform, "name": data_obj.name, "url": data_obj.url, "parameter": parameter_dcit,
-                               "last_success": data_obj.last_success, "last_failure": data_obj.last_failure})
-        redis_conn.hset(name="LBDNS", key=kwargs["name"], value=data)
-        return data_obj
+: 1558851561:0;git config --global user.name "Xie Zhaoheng"
+: 1558852561:0;git config --global user.email 411317572@qq.com
+: 1558852562:0;git config --list
+: 1558852563:0;git config user.email
+: 1558852564:0;git config user.name
+: 1558853746:0;xprop WM_CLASS
+: 1558859031:0;sudo arp-scan -interface wlp1s0 --localnet
+: 1558859046:0;ssh pi@192.168.43.129
+: 1558945548:0;sed -r "s/\/tmp\//\/var\/run\//g" aa
+: 1559121339:0;sudo dpkg-reconfigure ca-certificates
+: 1559207965:0;/home/ubuntu/pyenv/py3env/bin/jupyter-notebook
+: 1559808467:0;svn revert --recursive .
+: 1559812678:0;sudo ulimit -SHn 65536
+: 1559812808:0;ulimit -n
+: 1560151665:0;redis-cli -h 192.168.0.154
+: 1560303408:0;telnet 103.118.36.248 -p 80
+: 1560758781:0;curl -O -J -L http://oss.dev.youtiankeji.com/csp/cache/domains/certs.tar.gz
+: 1560929261:0;ssh -p 63737 root@192.168.0.248
+: 1563437206:0;sudo /etc/init.d/networking restart && sudo /etc/init.d/network-manager restart
+: 1563931742:0;
+: 1563931742:0;exit
+: 1563931751:0;git config user.email
+: 1563931758:0;git config user.name
+: 1563931772:0;git config --list
 
 
 curl -X GET --header 'Accept: application/json' --header 'X-CSRFToken: o3mtsxVX9HYyuR2pHjTUYLNJ5gjmhApppwmRjMBLfxXAHef0fWcqs1193ISntwYG' --header 'Authorization: Token NDUzMzQ4ZjIxMjFjMjIxOGE5NDJmOThiN2IzMTg2MDk' 'http://192.168.0.154:9988/api/1.0.0/Srss/'
