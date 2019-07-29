@@ -62,7 +62,24 @@ libmysqlclient-dev mysql-dev python-dev python-mysqldb libssl-dev
 
 http://archive.cloudera.com/cdh5/cdh/5/
 
+{
+    "font_face": "Courier New",
+    "font_size": 13,
+    "ignored_packages":
+    [
+        "Vintage"
+    ],
+    "theme": "Default.sublime-theme",
+    "word_wrap": true
+}
 
+[   
+        { "keys": ["ctrl+d"], "command": "duplicate_line" },
+        { "keys": ["shift+enter"], "command": "run_macro_file", "args": {"file": "res://Packages/Default/Add Line.sublime-macro"} },
+]
+117.30.209.252
+uskydvpn
+uskyipsec4ytkj
 ---------------localhost------------------
 /home/ubuntu/Env/myPy3/bin/uwsgi --ini /home/ubuntu/PycharmProjects/logFilter/uwsgi/uwsgi.ini
 
@@ -117,6 +134,11 @@ sudo /etc/init.d/networking restart && sudo /etc/init.d/network-manager restart
 15楼WiFi密码: 05922226199
 svn账号密码: xiezh   ytkj@Xzh239@
 analysis地址: svn://192.168.0.212/cdnrepo/02-code/gslb-analysis-api
+URL: svn://192.168.0.212/cdnrepo/02-code/py
+URL: svn://192.168.0.212/cdnrepo/02-code/spm-api
+URL: svn://192.168.0.212/cdnrepo/01-docs/API/spm
+
+
 spm地址: 
 151数据库: mysql -uusky -pusky@123456
 docker机: root  usky666!#%
