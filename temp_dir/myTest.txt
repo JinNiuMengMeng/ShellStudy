@@ -152,6 +152,7 @@ analysis地址: svn://192.168.0.212/cdnrepo/02-code/gslb-analysis-api
 svn://192.168.0.212/cdnrepo/02-code/py
 URL: svn://192.168.0.212/cdnrepo/01-docs/API/spm
 URL: svn://192.168.0.212/cdnrepo/02-code/spm-api
+VPN: IP:117.30.209.252   username:uskydvpn    password:uskyipsec4ytkj
 
 spm地址: 
 151数据库: mysql -uusky -pusky@123456
@@ -177,7 +178,7 @@ docker run --privileged=true -d --name=MyCentos7 -p 9988:9988 -p 63737:22 -p 330
 docker exec -it MyCentos7 /bin/bash
 
 
-./deploy.sh --domain=analysis-api.uskycdn.com --env=prod
+./deploy.sh --domain analysis-api.uskycdn.com --env prod
 ./deploy.sh --domain spm-api.uskycdn.com --env prod --dbhost 127.0.0.1
 ./deploy.sh --domain spm-api.uskycdn.com --env prod --dbhost mysql.spm.uskycdn.com
 
@@ -187,12 +188,28 @@ echo "" > /usr/local/spm-api/var/log/gunicorn-access.log && echo "" > /usr/local
 pkill -9 gunicorn; source /data/spm/bin/activate && cd /usr/local/spm-api/bin/spm/ && find ./ -name "*.pyc" | xargs rm; gunicorn -w 1 -b 0.0.0.0:9988 wsgi:application --error-logfile /usr/local/spm-api/var/log/gunicorn-error.log --log-level info --worker-class gevent
 
 
-ab -k -n 1000 -c 500 -T "application/json" -H "Content-Type: application/json" -H "X-CSRFToken: zBKfCPmleFrh6FMnlQibr8G1LGT27leJGxf9GvV77WtOsYKgKTPvmENt9AC2txLu" -H "Authorization: Token ZWE0Njc2YTY2MDQyMzEzZjMxMmQ5NjcwYmQ0OGU2ZTc" "http://192.168.0.151:9988/api/1.0.0/cache-groups/"
-
 mysqldump -uusky -pusky@123456 --no-create-info --tab=/tmp RUNOOB runoob_tbl
 mysqldump -h 127.0.0.1 -uusky -pusky@123456 spm > /root/spm_wa.sql
 
 
 insert into ip_to_cv (id, IPHEAD, IPTAIL, country, country_name, province, city, latitude, longitude, mailnum, timezone)values(123434546, 14, 2, "XM", "XiaMen", "FuJianq", "huliq", "as", "a2", "shanghai2", "shanghai1");
 
+/home/ubuntu/svn_project/gslb-analysis-api/branches/xzh/bin/analysis
+/home/ubuntu/svn_project/gslb-analysis-api/branches/xzh
 
+
+# str -> datetime   datetime.strptime('2015-6-1 18:19:59', '%Y-%m-%d %H:%M:%S')
+# datetime -> str   datetime.now().strftime('%a, %b %d %H:%M')
+# datetime -> str   datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+# 时间加减           datetime.now() + timedelta(days=2, hours=12)
+datetime.utcfromtimestamp(int(1564641272.004826))
+datetime.utcfromtimestamp(int(1564641272.004826)).isoformat()
+
+将python的datetime转换为unix时间戳
+d_time = datetime.datetime.now()
+ans_time = time.mktime(d_time.timetuple())
+
+
+将unix时间戳转换为python的datetime
+unix_ts = 1439111214.0
+time = datetime.datetime.fromtimestamp(unix_ts)
