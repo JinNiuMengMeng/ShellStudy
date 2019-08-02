@@ -40,7 +40,6 @@ sudo arp-scan -interface wlp5s0 --localnet
 : 1560929261:0;ssh -p 63737 root@192.168.0.248
 : 1563437206:0;sudo /etc/init.d/networking restart && sudo /etc/init.d/network-manager restart
 
-
 pip3 install pycrypto
 
 *  *  * *  *   My Command
@@ -164,38 +163,28 @@ mysql -h 103.118.36.210 -u usky -pusky@123456
 python manage.py makemigrations --settings settings.prod
 python manage.py migrate --settings settings.prod
 python manage.py init_apis --settings settings.prod
+
+
+---------------analysis-------------
+source /data/analysis_env/bin/activate && cd /usr/local/gslb-analysis-api/bin/analysis/
+
+./deploy.sh --domain analysis-api.uskycdn.com --env prod
+
+python manage.py get_big_data_info --settings settings.prod
+
+---------------spm-------------
 python manage.py get_info --settings settings.prod
 
 gunicorn -w 1 -b 0.0.0.0:9988 wsgi:application --access-logfile "/usr/local/spm-api/var/log/gunicorn-access.log" --error-logfile "/usr/local/spm-api/var/log/gunicorn-error.log" --log-level info --worker-class gevent
 
-
-sudo /etc/init.d/networking restart && sudo /etc/init.d/network-manager restart
-
-gunicorn -w 1 -b 0.0.0.0:9988 wsgi:application --access-logfile /usr/local/spm-api/var/log/gunicorn-access.log --error-logfile /usr/local/spm-api/var/log/gunicorn-error.log --log-level info --worker-class gevent
-
-
-docker run --privileged=true -d --name=MyCentos7 -p 9988:9988 -p 63737:22 -p 3307:3306 -p 80:80 wahaha00/my-centos-7-ssh:v2.0 /usr/sbin/init
-docker exec -it MyCentos7 /bin/bash
-
-
-./deploy.sh --domain analysis-api.uskycdn.com --env prod
 ./deploy.sh --domain spm-api.uskycdn.com --env prod --dbhost 127.0.0.1
 ./deploy.sh --domain spm-api.uskycdn.com --env prod --dbhost mysql.spm.uskycdn.com
 
-
 echo "" > /usr/local/spm-api/var/log/gunicorn-access.log && echo "" > /usr/local/spm-api/var/log/gunicorn-error.log && echo "" > /usr/local/spm-api/var/log/account.log && pkill -9 gunicorn; source /data/spm/bin/activate && cd /usr/local/spm-api/bin/spm/ && find ./ -name "*.pyc" | xargs rm; gunicorn -w 8 -b 0.0.0.0:9988 wsgi:application  --access-logfile /usr/local/spm-api/var/log/gunicorn-access.log --error-logfile /usr/local/spm-api/var/log/gunicorn-error.log --log-level info --worker-class gevent
-
-pkill -9 gunicorn; source /data/spm/bin/activate && cd /usr/local/spm-api/bin/spm/ && find ./ -name "*.pyc" | xargs rm; gunicorn -w 1 -b 0.0.0.0:9988 wsgi:application --error-logfile /usr/local/spm-api/var/log/gunicorn-error.log --log-level info --worker-class gevent
 
 
 mysqldump -uusky -pusky@123456 --no-create-info --tab=/tmp RUNOOB runoob_tbl
 mysqldump -h 127.0.0.1 -uusky -pusky@123456 spm > /root/spm_wa.sql
-
-
-insert into ip_to_cv (id, IPHEAD, IPTAIL, country, country_name, province, city, latitude, longitude, mailnum, timezone)values(123434546, 14, 2, "XM", "XiaMen", "FuJianq", "huliq", "as", "a2", "shanghai2", "shanghai1");
-
-/home/ubuntu/svn_project/gslb-analysis-api/branches/xzh/bin/analysis
-/home/ubuntu/svn_project/gslb-analysis-api/branches/xzh
 
 
 # str -> datetime   datetime.strptime('2015-6-1 18:19:59', '%Y-%m-%d %H:%M:%S')
@@ -213,3 +202,4 @@ ans_time = time.mktime(d_time.timetuple())
 将unix时间戳转换为python的datetime
 unix_ts = 1439111214.0
 time = datetime.datetime.fromtimestamp(unix_ts)
+
