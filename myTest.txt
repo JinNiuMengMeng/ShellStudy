@@ -12,6 +12,35 @@ sudo arp-scan -interface wlp5s0 --localnet
 # https://github.com/JinNiuMengMeng/electron-wechat
 
 
+# 正则匹配中文
+[\u4E00-\u9FFF]
+
+# vim 去掉包含networking的行
+%s/.*networking.*\n//g
+
+# bash_history
+: 1558851561:0;git config --global user.name "Xie Zhaoheng"
+: 1558852561:0;git config --global user.email 411317572@qq.com
+: 1558852562:0;git config --list
+: 1558852563:0;git config user.email
+: 1558852564:0;git config user.name
+: 1558853746:0;xprop WM_CLASS
+: 1558859031:0;sudo arp-scan -interface wlp1s0 --localnet
+: 1558859046:0;ssh pi@192.168.43.129
+: 1558945548:0;sed -r "s/\/tmp\//\/var\/run\//g" aa
+: 1559121339:0;sudo dpkg-reconfigure ca-certificates
+: 1559207965:0;/home/ubuntu/pyenv/py3env/bin/jupyter-notebook
+: 1559808467:0;svn revert --recursive .
+: 1559808468:0;svn cp -m "创建新的分支xzh" svn://x.x.x.x/spm-api/branches/dev svn://x.x.x.x/spm-api/branches/xzh
+: 1559808469:0;svn merge svn://x.x.x.x/spm-api/branches/xzh
+: 1559812678:0;sudo ulimit -SHn 65536
+: 1559812808:0;ulimit -n
+: 1560151665:0;redis-cli -h 192.168.0.154
+: 1560303408:0;telnet 103.118.36.248 -p 80
+: 1560758781:0;curl -O -J -L http://oss.dev.youtiankeji.com/csp/cache/domains/certs.tar.gz
+: 1560929261:0;ssh -p 63737 root@192.168.0.248
+: 1563437206:0;sudo /etc/init.d/networking restart && sudo /etc/init.d/network-manager restart
+
 pip3 install pycrypto
 
 *  *  * *  *   My Command
@@ -61,7 +90,7 @@ ubuntu编译安装python27
 libmysqlclient-dev mysql-dev python-dev python-mysqldb libssl-dev
 
 http://archive.cloudera.com/cdh5/cdh/5/
-
+---------------config--------------------
 {
     "font_face": "Courier New",
     "font_size": 13,
@@ -72,14 +101,13 @@ http://archive.cloudera.com/cdh5/cdh/5/
     "theme": "Default.sublime-theme",
     "word_wrap": true
 }
-
 [   
         { "keys": ["ctrl+d"], "command": "duplicate_line" },
         { "keys": ["shift+enter"], "command": "run_macro_file", "args": {"file": "res://Packages/Default/Add Line.sublime-macro"} },
 ]
-117.30.209.252
-uskydvpn
-uskyipsec4ytkj
+
+/usr/bin/flameshot gui -p /usr/bin/flameshot gui -p /home/ubuntu/Documents/share/pic
+
 ---------------localhost------------------
 /home/ubuntu/Env/myPy3/bin/uwsgi --ini /home/ubuntu/PycharmProjects/logFilter/uwsgi/uwsgi.ini
 
@@ -129,19 +157,18 @@ scp -P 63737 -r xxx root@192.168.0.151:/usr/local/spm-api/
 # 重启网络
 sudo /etc/init.d/networking restart && sudo /etc/init.d/network-manager restart
 
-pacman-key --init
-pacman-key --populate archlinux
-pacman-key --populate archlinuxcn
+赛斯因弗，回复“woodpecker”或者获得woodpecker下载链接。
+智能触发器和auto js
 
 ------------------------------temp------------------------
 17楼wifi密码: usky05922226199@%
 15楼WiFi密码: 05922226199
 svn账号密码: xiezh   ytkj@Xzh239@
 analysis地址: svn://192.168.0.212/cdnrepo/02-code/gslb-analysis-api
-URL: svn://192.168.0.212/cdnrepo/02-code/py
-URL: svn://192.168.0.212/cdnrepo/02-code/spm-api
+svn://192.168.0.212/cdnrepo/02-code/py
 URL: svn://192.168.0.212/cdnrepo/01-docs/API/spm
-
+URL: svn://192.168.0.212/cdnrepo/02-code/spm-api
+VPN: IP:117.30.209.252   username:uskydvpn    password:uskyipsec4ytkj
 
 spm地址: 
 151数据库: mysql -uusky -pusky@123456
@@ -154,73 +181,41 @@ python manage.py makemigrations --settings settings.prod
 python manage.py migrate --settings settings.prod
 python manage.py init_apis --settings settings.prod
 
+---------------analysis-------------
+source /data/analysis_env/bin/activate && cd /usr/local/gslb-analysis-api/bin/analysis/
+
+./deploy.sh --domain analysis-api.uskycdn.com --env prod
+
+python manage.py get_big_data_info --settings settings.prod
+
+---------------spm-------------
+python manage.py get_info --settings settings.prod
+
 gunicorn -w 1 -b 0.0.0.0:9988 wsgi:application --access-logfile "/usr/local/spm-api/var/log/gunicorn-access.log" --error-logfile "/usr/local/spm-api/var/log/gunicorn-error.log" --log-level info --worker-class gevent
 
-
-sudo /etc/init.d/networking restart && sudo /etc/init.d/network-manager restart
-
-App_service
-Logical_group
-Logical_servicesdf
-
-
-gunicorn -w 1 -b 0.0.0.0:9988 wsgi:application --access-logfile /usr/local/spm-api/var/log/gunicorn-access.log --error-logfile /usr/local/spm-api/var/log/gunicorn-error.log --log-level info --worker-class gevent
-
-
-docker run --privileged=true -d --name=MyCentos7 -p 9988:9988 -p 63737:22 -p 3307:3306 -p 80:80 wahaha00/my-centos-7-ssh:v2.0 /usr/sbin/init
-docker exec -it MyCentos7 /bin/bash
-
-
-./deploy.sh --domain=analysis-api.uskycdn.com --env=prod
 ./deploy.sh --domain spm-api.uskycdn.com --env prod --dbhost 127.0.0.1
 ./deploy.sh --domain spm-api.uskycdn.com --env prod --dbhost mysql.spm.uskycdn.com
 
-
-echo "" > /usr/local/spm-api/var/log/gunicorn-access.log && echo "" > /usr/local/spm-api/var/log/gunicorn-error.log && echo "" > /usr/local/spm-api/var/log/account.log && pkill -9 gunicorn; source /data/spm/bin/activate && cd /usr/local/spm-api/bin/spm/ && find ./ -name "*.pyc" | xargs rm && gunicorn -w 1 -b 0.0.0.0:9988 wsgi:application  --access-logfile /usr/local/spm-api/var/log/gunicorn-access.log --error-logfile /usr/local/spm-api/var/log/gunicorn-error.log --log-level info --worker-class gevent
-
-pkill -9 gunicorn; source /data/spm/bin/activate && cd /usr/local/spm-api/bin/spm/ && find ./ -name "*.pyc" | xargs rm && gunicorn -w 1 -b 0.0.0.0:9988 wsgi:application --error-logfile /usr/local/spm-api/var/log/gunicorn-error.log --log-level info --worker-class gevent
+echo "" > /usr/local/spm-api/var/log/gunicorn-access.log && echo "" > /usr/local/spm-api/var/log/gunicorn-error.log && echo "" > /usr/local/spm-api/var/log/account.log && pkill -9 gunicorn; source /data/spm/bin/activate && cd /usr/local/spm-api/bin/spm/ && find ./ -name "*.pyc" | xargs rm; gunicorn -w 8 -b 0.0.0.0:9988 wsgi:application  --access-logfile /usr/local/spm-api/var/log/gunicorn-access.log --error-logfile /usr/local/spm-api/var/log/gunicorn-error.log --log-level info --worker-class gevent
 
 
-mysql -uroot -pusky@456321 -e "delete from mysql.user where User='usky';" && mysql -uroot -pusky@456321 -e "drop database spm;"
+mysqldump -uusky -pusky@123456 --no-create-info --tab=/tmp RUNOOB runoob_tbl
+mysqldump -h 127.0.0.1 -uusky -pusky@123456 spm > /root/spm_wa.sql
 
 
-ab -k -n 1000 -c 500 -T "application/json" -H "Content-Type: application/json" -H "X-CSRFToken: zBKfCPmleFrh6FMnlQibr8G1LGT27leJGxf9GvV77WtOsYKgKTPvmENt9AC2txLu" -H "Authorization: Token ZWE0Njc2YTY2MDQyMzEzZjMxMmQ5NjcwYmQ0OGU2ZTc" "http://192.168.0.151:9988/api/1.0.0/cache-groups/"
+# str -> datetime   datetime.strptime('2015-6-1 18:19:59', '%Y-%m-%d %H:%M:%S')
+# datetime -> str   datetime.now().strftime('%a, %b %d %H:%M')
+# datetime -> str   datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+# 时间加减           datetime.now() + timedelta(days=2, hours=12)
+datetime.utcfromtimestamp(int(1564641272.004826))
+datetime.utcfromtimestamp(int(1564641272.004826)).isoformat()
+
+将python的datetime转换为unix时间戳
+d_time = datetime.datetime.now()
+ans_time = time.mktime(d_time.timetuple())
 
 
-ab -k -n 500 -c 500 -T "application/json" -H "Content-Type: application/json" -H "X-CSRFToken: IWsgjb3W3fE4Z9K6tJNrPoUgADDtCOdGPSXanRCIWwGBlsIZSMkLKU1IYxmtY0Kr" -H "Authorization: Token MmMyNDEyYzdiOThmZDZkZDE0YjM3ZjgyOTc0MWVkOTM" "http://192.168.0.155:9988/api/1.0.0/cache-groups/"
+将unix时间戳转换为python的datetime
+unix_ts = 1439111214.0
+time = datetime.datetime.fromtimestamp(unix_ts)
 
-curl -X GET --header 'Accept: application/json' --header 'X-CSRFToken: IWsgjb3W3fE4Z9K6tJNrPoUgADDtCOdGPSXanRCIWwGBlsIZSMkLKU1IYxmtY0Kr' --header 'Authorization: Token MmMyNDEyYzdiOThmZDZkZDE0YjM3ZjgyOTc0MWVkOTM' 'http://192.168.0.151:9988/api/1.0.0/cache-groups/'
-
-151服务器, mysql最大连接数500
-gunicorn worker=8, 总请求数量1000, 并发500, 失败数1, 总耗时21s
-gunicorn worker=8, 总请求数量1000, 并发1000, 失败数0, 总耗时22.6s
-: 1558851561:0;git config --global user.name "Xie Zhaoheng"
-: 1558852561:0;git config --global user.email 411317572@qq.com
-: 1558852562:0;git config --list
-: 1558852563:0;git config user.email
-: 1558852564:0;git config user.name
-: 1558853746:0;xprop WM_CLASS
-: 1558859031:0;sudo arp-scan -interface wlp1s0 --localnet
-: 1558859046:0;ssh pi@192.168.43.129
-: 1558945548:0;sed -r "s/\/tmp\//\/var\/run\//g" aa
-: 1559121339:0;sudo dpkg-reconfigure ca-certificates
-: 1559207965:0;/home/ubuntu/pyenv/py3env/bin/jupyter-notebook
-: 1559808467:0;svn revert --recursive .
-: 1559808468:0;svn copy svn://127.0.0.1/repos/main svn://127.0.0.1/repos/branch -m "test"
-: 1559812678:0;sudo ulimit -SHn 65536
-: 1559812808:0;ulimit -n
-: 1560151665:0;redis-cli -h 192.168.0.154
-: 1560303408:0;telnet 103.118.36.248 -p 80
-: 1560758781:0;curl -O -J -L http://oss.dev.youtiankeji.com/csp/cache/domains/certs.tar.gz
-: 1560929261:0;ssh -p 63737 root@192.168.0.248
-: 1563437206:0;sudo /etc/init.d/networking restart && sudo /etc/init.d/network-manager restart
-: 1563931742:0;
-: 1563931742:0;exit
-: 1563931751:0;git config user.email
-: 1563931758:0;git config user.name
-: 1563931772:0;git config --list
-
-
-curl -X GET --header 'Accept: application/json' --header 'X-CSRFToken: o3mtsxVX9HYyuR2pHjTUYLNJ5gjmhApppwmRjMBLfxXAHef0fWcqs1193ISntwYG' --header 'Authorization: Token NDUzMzQ4ZjIxMjFjMjIxOGE5NDJmOThiN2IzMTg2MDk' 'http://192.168.0.154:9988/api/1.0.0/Srss/'
-
-https://www.visualsvn.com/files/Apache-Subversion-1.12.0.zip

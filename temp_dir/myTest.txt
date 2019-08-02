@@ -89,6 +89,21 @@ ubuntu编译安装python27
 libmysqlclient-dev mysql-dev python-dev python-mysqldb libssl-dev
 
 http://archive.cloudera.com/cdh5/cdh/5/
+---------------config--------------------
+{
+    "font_face": "Courier New",
+    "font_size": 13,
+    "ignored_packages":
+    [
+        "Vintage"
+    ],
+    "theme": "Default.sublime-theme",
+    "word_wrap": true
+}
+[   
+        { "keys": ["ctrl+d"], "command": "duplicate_line" },
+        { "keys": ["shift+enter"], "command": "run_macro_file", "args": {"file": "res://Packages/Default/Add Line.sublime-macro"} },
+]
 
 
 ---------------localhost------------------
