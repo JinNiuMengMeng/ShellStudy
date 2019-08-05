@@ -75,9 +75,10 @@ for((i=0; i<=50;i++));do
     echo $i >> ~/Documents/cront/output/test.out
     sleep 1
 done
+---------flameshot-------------
+/usr/bin/flameshot gui -p /home/ubuntu/Documents/share/pic
 
-
-ubuntu编译安装python27
+-------------ubuntu编译安装python27---------------
 ./configure --prefix=路径
 
 如果报错 zipimport.ZipImportError: can't decompress data; zlib not available
@@ -89,6 +90,7 @@ ubuntu编译安装python27
 libmysqlclient-dev mysql-dev python-dev python-mysqldb libssl-dev
 
 http://archive.cloudera.com/cdh5/cdh/5/
+
 ---------------config--------------------
 {
     "font_face": "Courier New",
@@ -101,8 +103,8 @@ http://archive.cloudera.com/cdh5/cdh/5/
     "word_wrap": true
 }
 [   
-        { "keys": ["ctrl+d"], "command": "duplicate_line" },
-        { "keys": ["shift+enter"], "command": "run_macro_file", "args": {"file": "res://Packages/Default/Add Line.sublime-macro"} },
+    { "keys": ["ctrl+d"], "command": "duplicate_line" },
+    { "keys": ["shift+enter"], "command": "run_macro_file", "args": {"file": "res://Packages/Default/Add Line.sublime-macro"} },
 ]
 
 
@@ -218,3 +220,4 @@ ans_time = time.mktime(d_time.timetuple())
 unix_ts = 1439111214.0
 time = datetime.datetime.fromtimestamp(unix_ts)
 
+--with-openssl=/
