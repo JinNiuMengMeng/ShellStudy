@@ -17,6 +17,13 @@ sudo arp-scan -interface wlp5s0 --localnet
 # vim 去掉包含networking的行
 %s/.*networking.*\n//g
 
+# ssh
+补充ssh -D 代码的事情
+可以运行
+ssh -D 10023 root@ip
+然后在浏览器中设置  sockect  127.0.0.1  10023 代理即可
+ssh -qTfnN -D 7070  root@ip     #建立一个通道
+
 # bash_history
 : 1558851561:0;git config --global user.name "Xie Zhaoheng"
 : 1558852561:0;git config --global user.email 411317572@qq.com
@@ -164,10 +171,10 @@ sudo /etc/init.d/networking restart && sudo /etc/init.d/network-manager restart
 17楼wifi密码: usky05922226199@%
 15楼WiFi密码: 05922226199
 svn账号密码: xiezh   ytkj@Xzh239@
-analysis地址: svn://192.168.0.212/cdnrepo/02-code/gslb-analysis-api
+svn://192.168.0.212/cdnrepo/02-code/gslb-analysis-api
 svn://192.168.0.212/cdnrepo/02-code/py
-URL: svn://192.168.0.212/cdnrepo/01-docs/API/spm
-URL: svn://192.168.0.212/cdnrepo/02-code/spm-api
+svn://192.168.0.212/cdnrepo/01-docs/API/spm
+svn://192.168.0.212/cdnrepo/02-code/spm-api
 VPN: IP:117.30.209.252   username:uskydvpn    password:uskyipsec4ytkj
 
 spm地址: 
@@ -208,6 +215,8 @@ mysqldump -h 127.0.0.1 -uusky -pusky@123456 spm > /root/spm_wa.sql
 # datetime -> str   datetime.now().strftime('%a, %b %d %H:%M')
 # datetime -> str   datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 # 时间加减           datetime.now() + timedelta(days=2, hours=12)
+
+from datetime import datetime
 datetime.utcfromtimestamp(int(1564641272.004826))
 datetime.utcfromtimestamp(int(1564641272.004826)).isoformat()
 
@@ -220,3 +229,6 @@ ans_time = time.mktime(d_time.timetuple())
 unix_ts = 1439111214.0
 time = datetime.datetime.fromtimestamp(unix_ts)
 ip_attack_statistics
+
+
+1565249340
