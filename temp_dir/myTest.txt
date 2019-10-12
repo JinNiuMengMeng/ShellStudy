@@ -166,7 +166,7 @@ sudo /etc/init.d/networking restart && sudo /etc/init.d/network-manager restart
 
 赛斯因弗，回复“woodpecker”或者获得woodpecker下载链接。
 智能触发器和auto js
-
+virscan查毒报告：http://r.virscan.org/language/zh-cn/report/c4a13a06949471a8788a4b3219a7174d  哈勃分析系统：https://habo.qq.com/file/showdetail?pk=ADcGZ11oB2MIPVs6U2Y%3D
 ------------------------------temp------------------------
 17楼wifi密码: usky05922226199@%
 15楼WiFi密码: 05922226199
@@ -176,7 +176,7 @@ svn://192.168.0.212/cdnrepo/02-code/py
 svn://192.168.0.212/cdnrepo/01-docs/API/spm
 svn://192.168.0.212/cdnrepo/02-code/spm-api
 VPN: IP:117.30.209.252   username:uskydvpn    password:uskyipsec4ytkj
-
+IP: 192.168.0.98  NetMask:255.255.255.0  Gateway:192.168.0.1  DNS: 192.168.0.214/1.1.1.1
 spm地址: 
 151数据库: mysql -uusky -pusky@123456
 docker机: root  usky666!#%
@@ -189,12 +189,14 @@ python manage.py migrate --settings settings.prod
 python manage.py init_apis --settings settings.prod
 
 
----------------analysis-------------
-source /data/analysis_env/bin/activate && cd /usr/local/gslb-analysis-api/bin/analysis/
+---------------msp-------------
+source /root/virtualenvs/msp/bin/activate && cd /usr/local/msp-api/bin/msp/
 
-./deploy.sh --domain analysis-api.uskycdn.com --env prod
+./deploy.sh --domain msp-api.uskycdn.com --env prod
 
 python manage.py get_big_data_info --settings settings.prod
+
+gunicorn -w 1 -b 0.0.0.0:9988 wsgi:application --access-logfile "/usr/local/gslb-msp-api/var/log/gunicorn-access.log" --error-logfile "/usr/local/gslb-msp-api/var/log/gunicorn-error.log" --log-level info --worker-class gevent
 
 ---------------spm-------------
 python manage.py get_info --settings settings.prod
@@ -208,13 +210,13 @@ echo "" > /usr/local/spm-api/var/log/gunicorn-access.log && echo "" > /usr/local
 
 
 mysqldump -uusky -pusky@123456 --no-create-info --tab=/tmp RUNOOB runoob_tbl
-mysqldump -h 127.0.0.1 -uusky -pusky@123456 spm > /root/spm_wa.sql
+mysqldump -h 127.0.0.1 -uusky -pusky@123456 spm > /root/spm_new.sql
 
 
 # str -> datetime   datetime.strptime('2015-6-1 18:19:59', '%Y-%m-%d %H:%M:%S')
 # datetime -> str   datetime.now().strftime('%a, %b %d %H:%M')
 # datetime -> str   datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-# 时间加减           datetime.now() + timedelta(days=2, hours=12)
+# 时间加减             datetime.now() + timedelta(days=2, hours=12)
 
 from datetime import datetime
 datetime.utcfromtimestamp(int(1564641272.004826))
@@ -228,7 +230,146 @@ ans_time = time.mktime(d_time.timetuple())
 将unix时间戳转换为python的datetime
 unix_ts = 1439111214.0
 time = datetime.datetime.fromtimestamp(unix_ts)
-ip_attack_statistics
 
 
-1565249340
+https://play.google.com/store/apps/details?id=com.ximalaya.ting.android
+https://play.google.com/store/apps/details?id=com.eotu.browser
+https://play.google.com/store/apps/details?id=com.luojilab.player
+
+
+LOAD DATA INFILE '/opt/IP2LOCATION-LITE-DB11.CSV' 
+INTO TABLE ip2locations 
+FIELDS TERMINATED BY ',' 
+OPTIONALLY ENCLOSED BY '"' 
+LINES TERMINATED BY '\n';
+
+http://music.163.com/song/media/outer/url?id=862100828.mp3
+
+https://music.163.com/#/my/m/music/playlist?id=2841142344
+
+mysql -uroot -pusky@456321 --connect-expired-password -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'usky@456321';"
+
+grant all privileges on *.* to 'usky'@'103.134.148.31' IDENTIFIED BY 'usky@123456';
+FLUSH PRIVILEGES;
+
+grant all privileges on *.*  to 'root'@'192.168.*.*'  identified by '123456' WITH GRANT OPTION;
+
+
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%'IDENTIFIED BY 'usky@123456' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%'IDENTIFIED BY 'usky@456321' WITH GRANT OPTION;
+
+
+echo "" > account.log; echo "" > deploy.log; echo "" > error.log; echo "" > exception.log; echo "" > gunicorn-access.log; echo "" > gunicorn-error.log; echo "" > gunicorn-supervisor-api.log; echo "" > gunicorn-supervisor-system.log; echo "" > insert_query_log.log ; echo "" > log-collect.log; echo "" > monitor.log; echo "" > start_get_big_data.log; echo "" > start_load_data.log; echo "" > system.log
+
+apt-cache depends netease-cloud-music
+
+rm -rf ./apps/account/migrations/ ./apps/monitor/migrations/ ./apps/query/migrations/ ./apps/system/migrations/
+时间规划局+前目的地
+
+{
+  "message": "ok",
+  "code": "200",
+  "data": [
+    {
+      "id": "0001cff99d50",
+    },
+    {
+      "id": "032ec60d8571",
+    },
+    {
+      "id": "0458d2b3548f",
+    },
+    {
+      "id": "08d875e7b4a8",
+    },
+    {
+      "id": "09063637a082",
+    },
+    {
+      "id": "0dc23db7b586",
+    },
+    {
+      "id": "16e3e3d690da",
+    },
+    {
+      "id": "18f28891bb6e",
+    },
+    {
+      "id": "199dfb8cfe12",
+    },
+    {
+      "id": "1a9f8b090d6f",
+    }
+  ],
+  "paging": {
+    "count": 87,
+    "page": 1,
+    "page_size": 10,
+    "pages": 9
+  },
+  "success": true
+}
+
+{
+    "message": "ok",
+    "code": "200",
+    "data": {
+        "node_flow_distributed": {   # 节点流量分布
+            "cn": {
+                "count": 168,    # 访问次数
+                "bandwidthTop": 826747.68,   # 带宽峰值，基础单位为 字节/秒
+                "flow": 55880204,   # 流量，单位为字节
+                "flowRate": 100,   # 流量占比
+                "countRate": 100    # 访问占比，已经为百分数
+            },
+             ......
+        },
+        "node_flow_trend": {    # 节点加速流量趋势
+            "node": [
+                {
+                    "value": 0,  # 时间节点内总流量，单位为字节
+                    "key": "2019-10-08 22:45:00"
+                },
+                ......
+            ],
+            "relativeRate": 8121.93,  # 环比百分比，已经为百分数
+            "summary": 55880204  # 总流量，单位为字节
+        }
+    },
+    "success": true
+}
+
+{
+    "message": "ok",
+    "code": "200",
+    "data": {
+        "router_flow_trend": {
+            "node": {
+                "2019-08-27": {
+                    "inValue": 8600422.00,  # 时间节点内入口总流量, 单位字节
+                    "outValue": 8526265.00  # 时间节点内出口总流量, 单位字节
+                },
+                "2019-08-28": {
+                    "inValue": 9281878.00,
+                    "outValue": 9052344.00
+                },
+            },
+            "inFlowSummary": 26510909.00,  # 入口总流量, 单位字节
+            "outFlowSummary": 26229557.00  # 出口总流量, 单位字节
+        },
+        "router_flow_distributed": {
+            "cm1": {   # 路由
+                "outFlowRate": 33.50,  # 出口流量占比，已经为百分数
+                "outFlow": 8788297.76,  # 出口流量
+                "inFlowRate": 33.40,
+                "outFlowBandwidthTop": 2901.84,
+                "inFlowBandwidthTop": 2854.26,
+                "inFlow": 8858063.00
+            },
+            "cm2": {  # 路由
+                ...
+            },
+        },
+    },
+    "success": true
+}
