@@ -193,7 +193,16 @@ python manage.py get_info --settings settings.prod
 
 gunicorn -w 1 -b 0.0.0.0:9988 wsgi:application --access-logfile "/usr/local/spm-api/var/log/gunicorn-access.log" --error-logfile "/usr/local/spm-api/var/log/gunicorn-error.log" --log-level info --worker-class gevent
 
-./deploy.sh --domain spm-api.uskycdn.com --env prod --dbhost 127.0.0.1
+./deploy.sh --domain spm-api.uskycdn.com --env prod --dbhost 127.0.0.1  set
+-g
+status-bg
+black
+
+
+  set
+-g
+status-fg
+white
 ./deploy.sh --domain spm-api.uskycdn.com --env prod --dbhost mysql.spm.uskycdn.com
 
 echo "" > /usr/local/spm-api/var/log/gunicorn-access.log && echo "" > /usr/local/spm-api/var/log/gunicorn-error.log && echo "" > /usr/local/spm-api/var/log/account.log && pkill -9 gunicorn; source /data/spm/bin/activate && cd /usr/local/spm-api/bin/spm/ && find ./ -name "*.pyc" | xargs rm; gunicorn -w 8 -b 0.0.0.0:9988 wsgi:application  --access-logfile /usr/local/spm-api/var/log/gunicorn-access.log --error-logfile /usr/local/spm-api/var/log/gunicorn-error.log --log-level info --worker-class gevent
@@ -202,20 +211,11 @@ echo "" > /usr/local/spm-api/var/log/gunicorn-access.log && echo "" > /usr/local
 mysqldump -uusky -pusky@123456 --no-create-info --tab=/tmp RUNOOB runoob_tbl
 mysqldump -h 127.0.0.1 -uusky -pusky@123456 spm > /root/spm_wa.sql
 
-
-# str -> datetime   datetime.strptime('2015-6-1 18:19:59', '%Y-%m-%d %H:%M:%S')
-# datetime -> str   datetime.now().strftime('%a, %b %d %H:%M')
-# datetime -> str   datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-# 时间加减           datetime.now() + timedelta(days=2, hours=12)
-datetime.utcfromtimestamp(int(1564641272.004826))
-datetime.utcfromtimestamp(int(1564641272.004826)).isoformat()
-
-将python的datetime转换为unix时间戳
-d_time = datetime.datetime.now()
-ans_time = time.mktime(d_time.timetuple())
+/usr/local/msp-api/var/log/insert_query_log.log
 
 
-将unix时间戳转换为python的datetime
-unix_ts = 1439111214.0
-time = datetime.datetime.fromtimestamp(unix_ts)
+wget http://softrepo.uskycdn.com/third_party/python/Python-2.7.15.tgz --no-check-certificate
 
+
+vim /etc/sysconfig/iptables
+cat /root/.ssh/authorized_keys
