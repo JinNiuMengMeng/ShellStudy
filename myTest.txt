@@ -181,6 +181,12 @@ python manage.py makemigrations --settings settings.prod
 python manage.py migrate --settings settings.prod
 python manage.py init_apis --settings settings.prod
 
+xzh -> dev -> trunk -> prod/yttest
+
+# lfpc.utache.com
+# 192.168.0.232:8033
+ls
+
 ---------------analysis-------------
 source /data/analysis_env/bin/activate && cd /usr/local/gslb-analysis-api/bin/analysis/
 
@@ -194,22 +200,14 @@ python manage.py get_info --settings settings.prod
 gunicorn -w 1 -b 0.0.0.0:9988 wsgi:application --access-logfile "/usr/local/spm-api/var/log/gunicorn-access.log" --error-logfile "/usr/local/spm-api/var/log/gunicorn-error.log" --log-level info --worker-class gevent
 
 ./deploy.sh --domain spm-api.uskycdn.com --env prod --dbhost 127.0.0.1  set
--g
-status-bg
-black
 
-
-  set
--g
-status-fg
-white
 ./deploy.sh --domain spm-api.uskycdn.com --env prod --dbhost mysql.spm.uskycdn.com
 
 echo "" > /usr/local/spm-api/var/log/gunicorn-access.log && echo "" > /usr/local/spm-api/var/log/gunicorn-error.log && echo "" > /usr/local/spm-api/var/log/account.log && pkill -9 gunicorn; source /data/spm/bin/activate && cd /usr/local/spm-api/bin/spm/ && find ./ -name "*.pyc" | xargs rm; gunicorn -w 8 -b 0.0.0.0:9988 wsgi:application  --access-logfile /usr/local/spm-api/var/log/gunicorn-access.log --error-logfile /usr/local/spm-api/var/log/gunicorn-error.log --log-level info --worker-class gevent
 
 
 mysqldump -uusky -pusky@123456 --no-create-info --tab=/tmp RUNOOB runoob_tbl
-mysqldump -h 127.0.0.1 -uusky -pusky@123456 spm > /root/spm_wa.sql
+mysqldump -h 127.0.0.1 -uusky -pusky@123456 spm > /opt/spm.sql
 
 /usr/local/msp-api/var/log/insert_query_log.log
 
@@ -222,3 +220,33 @@ cat /root/.ssh/authorized_keys
 
 
 XAka34A2rVRYJ4XBIU35UZMUEEF64CMMIYZCK2FZZUQNODEKUHGJLFMSLIQMQUCUBXRENLK6NZL37JXP4PZXQFILMQ2RG5R7G4QNDO3PSOEUBOCDRYSSXZGRARV6MGA33TN2AMUBHEL4FXMWYTTJDEINJXUAV4BAYKBDCZQWVF3LWYXSDCXY546U3NBGOI3ZPAP2SO3CSQFNB7VVIY123456789012345
+
+/usr/local/msp-api/misc/service/dpns_get/get_dpns_superviosor.conf
+/usr/local/msp-api/misc/service/dpns_get
+
+ps -aux | grep "gunicor*" |grep -v grep| cut -c 9-15 | xargs kill -9
+
+
+<div class="layout-grid-find" id="live">...</div>
+<div class="layout-grid-find" id="notStart">...</div>
+<div class="layout-grid-find" id="finished">...</div>
+
+
+https://jinniumengmeng.github.io/my_gitbook/
+
+
+
+sed -i -r "/INSERT INTO \`ip_to_cv\`/d" spm.sql
+
+
+1002486248:AAGpiUvZ361wkAYUGbbPDOyoXwgZX5ezxx0
+
+
+{"ok":true,"result":[{"update_id":68062762,
+"message":{"message_id":1,"from":{"id":998451345,"is_bot":false,"first_name":"Xie","last_name":"Zhaoheng","language_code":"en"},"chat":{"id":998451345,"first_name":"Xie","last_name":"Zhaoheng","type":"private"},"date":1573537411,"text":"/start","entities":[{"offset":0,"length":6,"type":"bot_command"}]}},{"update_id":68062763,
+"message":{"message_id":2,"from":{"id":998451345,"is_bot":false,"first_name":"Xie","last_name":"Zhaoheng","language_code":"en"},"chat":{"id":998451345,"first_name":"Xie","last_name":"Zhaoheng","type":"private"},"date":1573537417,"text":"hello world"}}]}
+
+
+998451345
+
+echo $'[include]\nfiles = /etc/supervisor/conf/*.conf' >> /etc/supervisord.conf
