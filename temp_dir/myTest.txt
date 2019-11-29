@@ -15,8 +15,6 @@ pip3 install pycrypto
 libmysqlclient-dev mysql-dev python-dev python-mysqldb libssl-dev
 
 http://archive.cloudera.com/cdh5/cdh/5/
-
-
 ---------------localhost------------------
 /home/ubuntu/Env/myPy3/bin/uwsgi --ini /home/ubuntu/PycharmProjects/logFilter/uwsgi/uwsgi.ini
 
@@ -45,8 +43,6 @@ scp /home/ubuntu/PycharmProjects/LuQiao/parking2.0/ice_feature/7_Ice_test/client
 # ----- gunicorn 指定文件启动 -------
 /home/ubuntu/Env/parkingPy27env/bin/gunicorn manage:appWeb -c /home/ubuntu/PycharmProjects/LuQiao/parking2.0/gunicorn/gunicorn.conf
 
-ssh -6 root@2001:19f0:5:3c79:5400:01ff:fed7:93dc%wlp5s0
-
 
 pip3 list --format=columns
 
@@ -59,12 +55,10 @@ UPDATE yilu_park.usr_privilege SET name='添加', menu_label='添加', target=NU
 # scp 指定端口
 scp -P 63737 -r xxx root@192.168.0.151:/usr/local/spm-api/
 
-# 重启网络
-sudo /etc/init.d/networking restart && sudo /etc/init.d/network-manager restart
-
 赛斯因弗，回复“woodpecker”或者获得woodpecker下载链接。
 智能触发器和auto js
-virscan查毒报告：http://r.virscan.org/language/zh-cn/report/c4a13a06949471a8788a4b3219a7174d  哈勃分析系统：https://habo.qq.com/file/showdetail?pk=ADcGZ11oB2MIPVs6U2Y%3D
+virscan查毒报告：http://r.virscan.org/language/zh-cn/report/c4a13a06949471a8788a4b3219a7174d  
+哈勃分析系统：https://habo.qq.com/file/showdetail?pk=ADcGZ11oB2MIPVs6U2Y%3D
 ------------------------------temp------------------------
 17楼wifi密码: usky05922226199@%2
 15楼WiFi密码: 05922226199
