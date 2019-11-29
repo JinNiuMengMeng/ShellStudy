@@ -161,7 +161,8 @@ sudo /etc/init.d/networking restart && sudo /etc/init.d/network-manager restart
 智能触发器和auto js
 
 ------------------------------temp------------------------
-17楼wifi密码: usky05922226199@%
+17楼wifi密码: USKY  usky05922226199@%2
+17楼wifi密码: USKY usky0592
 15楼WiFi密码: 05922226199
 svn账号密码: xiezh   ytkj@Xzh239@
 analysis地址: svn://192.168.0.212/cdnrepo/02-code/gslb-analysis-api
@@ -203,6 +204,28 @@ gunicorn -w 1 -b 0.0.0.0:9988 wsgi:application --access-logfile "/usr/local/spm-
 
 ./deploy.sh --domain spm-api.uskycdn.com --env prod --dbhost mysql.spm.uskycdn.com
 
+
+source /data/spm/bin/activate && cd /usr/local/spm-api/bin/spm/
+
+source /root/virtualenvs/msp/bin/activate && cd /usr/local/msp-api/bin/msp/
+
+./deploy.sh --domain msp-api.utcache.com --env prod --dbhost mysql.analysis.uskycdn.com
+
+./deploy.sh --domain spm-api.utcache.com --env prod --dbhost mysql.spm.uskycdn.com
+
+python manage.py get_big_data_info --settings settings.prod
+
+python manage.py get_info --settings settings.prod
+
+python manage.py makemigrations --settings settings.prod
+
+python manage.py migrate --settings settings.prod
+
+python manage.py init_apis --settings settings.prod
+
+python manage.py init_srs --settings settings.prod
+
+
 echo "" > /usr/local/spm-api/var/log/gunicorn-access.log && echo "" > /usr/local/spm-api/var/log/gunicorn-error.log && echo "" > /usr/local/spm-api/var/log/account.log && pkill -9 gunicorn; source /data/spm/bin/activate && cd /usr/local/spm-api/bin/spm/ && find ./ -name "*.pyc" | xargs rm; gunicorn -w 8 -b 0.0.0.0:9988 wsgi:application  --access-logfile /usr/local/spm-api/var/log/gunicorn-access.log --error-logfile /usr/local/spm-api/var/log/gunicorn-error.log --log-level info --worker-class gevent
 
 
@@ -234,19 +257,4 @@ ps -aux | grep "gunicor*" |grep -v grep| cut -c 9-15 | xargs kill -9
 
 https://jinniumengmeng.github.io/my_gitbook/
 
-
-
 sed -i -r "/INSERT INTO \`ip_to_cv\`/d" spm.sql
-
-
-1002486248:AAGpiUvZ361wkAYUGbbPDOyoXwgZX5ezxx0
-
-
-{"ok":true,"result":[{"update_id":68062762,
-"message":{"message_id":1,"from":{"id":998451345,"is_bot":false,"first_name":"Xie","last_name":"Zhaoheng","language_code":"en"},"chat":{"id":998451345,"first_name":"Xie","last_name":"Zhaoheng","type":"private"},"date":1573537411,"text":"/start","entities":[{"offset":0,"length":6,"type":"bot_command"}]}},{"update_id":68062763,
-"message":{"message_id":2,"from":{"id":998451345,"is_bot":false,"first_name":"Xie","last_name":"Zhaoheng","language_code":"en"},"chat":{"id":998451345,"first_name":"Xie","last_name":"Zhaoheng","type":"private"},"date":1573537417,"text":"hello world"}}]}
-
-
-998451345
-
-echo $'[include]\nfiles = /etc/supervisor/conf/*.conf' >> /etc/supervisord.conf
