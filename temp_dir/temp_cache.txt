@@ -5,34 +5,16 @@ ssh -D 10023 root@ip
 然后在浏览器中设置  sockect  127.0.0.1  10023 代理即可
 ssh -qTfnN -D 7070  root@ip     #建立一个通道
 
-
 pip3 install pycrypto
 
-
----------flameshot-------------
-/usr/bin/flameshot gui -p /home/ubuntu/Documents/share/pic
 
 libmysqlclient-dev mysql-dev python-dev python-mysqldb libssl-dev
 
 http://archive.cloudera.com/cdh5/cdh/5/
----------------localhost------------------
-/home/ubuntu/Env/myPy3/bin/uwsgi --ini /home/ubuntu/PycharmProjects/logFilter/uwsgi/uwsgi.ini
 
----------------server-------------------
-# ---- 手动启动测试 ----
-/usr/local/python3/py3env/bin/uwsgi --ini /opt/logFilter/uwsgi/uwsgi.ini
-
-# ---- supervisord 启动命令 ----
-/usr/local/python3/py2env/bin/python2 /usr/local/python3/py2env/bin/supervisord -c /usr/local/python3/supervisor/supervisord.conf
-
-# ---- supervisorctl 控制命令 ----
-/usr/local/python3/py2env/bin/supervisorctl status`|start`|stop`|restart
-/usr/local/python3/py2env/bin/supervisorctl -c /usr/local/python3/supervisor/supervisord.conf
 
 # ---- 关闭 supervisord 与 uwsgi, 并删掉 supervisor.sock 否则无法启动 ----
 ps -aux `| grep "supervisord" `|grep -v grep`| cut -c 9-15 `| xargs kill -9; ps -aux `| grep "uwsgi" `|grep -v grep`| cut -c 9-15 `| xargs kill -9; rm -rf /tmp/supervisor.sock; rm -rf /opt/logFilter/uwsgi/uwsgi.pid
-
-scp /home/ubuntu/PycharmProjects/LuQiao/parking2.0/ice_feature/7_Ice_test/clientiCatBo7.py root@192.168.14.137:/opt/
 
 # ----- uwsgi.ini 文件启动 ------
 /home/ubuntu/Env/parkingPy27env/bin/uwsgi --ini /home/ubuntu/PycharmProjects/LuQiao/parking2.0/uwsgi/uwsgi.ini
@@ -43,11 +25,7 @@ scp /home/ubuntu/PycharmProjects/LuQiao/parking2.0/ice_feature/7_Ice_test/client
 # ----- gunicorn 指定文件启动 -------
 /home/ubuntu/Env/parkingPy27env/bin/gunicorn manage:appWeb -c /home/ubuntu/PycharmProjects/LuQiao/parking2.0/gunicorn/gunicorn.conf
 
-
 pip3 list --format=columns
-
-https://pvp.qq.com/cp/a20161115tyf/page1.shtml
-
 
 UPDATE yilu_park.usr_privilege SET url=REPLACE(url, '替换前的值', '替换后的值') WHERE code LIKE "3455-01-01%";
 UPDATE yilu_park.usr_privilege SET name='添加', menu_label='添加', target=NULL, remarks=NULL, modify_time=NULL WHERE (code='1aaad2af09c5f7dbe718014f4626a6b8');
@@ -112,4 +90,5 @@ source /root/virtualenvs/msp/bin/activate && cd /usr/local/msp-api/bin/msp/
 
 
 
-
+https://jinniumengmeng.github.io/my_gitbook/
+https://wahaha00.gitee.io/my_gitbook/
