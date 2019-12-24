@@ -14,7 +14,7 @@ http://archive.cloudera.com/cdh5/cdh/5/
 
 
 # ---- 关闭 supervisord 与 uwsgi, 并删掉 supervisor.sock 否则无法启动 ----
-ps -aux `| grep "supervisord" `|grep -v grep`| cut -c 9-15 `| xargs kill -9; ps -aux `| grep "uwsgi" `|grep -v grep`| cut -c 9-15 `| xargs kill -9; rm -rf /tmp/supervisor.sock; rm -rf /opt/logFilter/uwsgi/uwsgi.pid
+ps -aux | grep "supervisord" |grep -v grep| cut -c 9-15 | xargs kill -9; ps -aux | grep "uwsgi" | grep -v grep | cut -c 9-15 | xargs kill -9; rm -rf /tmp/supervisor.sock; rm -rf /opt/logFilter/uwsgi/uwsgi.pid
 
 # ----- uwsgi.ini 文件启动 ------
 /home/ubuntu/Env/parkingPy27env/bin/uwsgi --ini /home/ubuntu/PycharmProjects/LuQiao/parking2.0/uwsgi/uwsgi.ini
@@ -30,23 +30,24 @@ pip3 list --format=columns
 UPDATE yilu_park.usr_privilege SET url=REPLACE(url, '替换前的值', '替换后的值') WHERE code LIKE "3455-01-01%";
 UPDATE yilu_park.usr_privilege SET name='添加', menu_label='添加', target=NULL, remarks=NULL, modify_time=NULL WHERE (code='1aaad2af09c5f7dbe718014f4626a6b8');
 
-# scp 指定端口
-scp -P 63737 -r xxx root@192.168.0.151:/usr/local/spm-api/
 
 赛斯因弗，回复“woodpecker”或者获得woodpecker下载链接。
 智能触发器和auto js
-virscan查毒报告：http://r.virscan.org/language/zh-cn/report/c4a13a06949471a8788a4b3219a7174d  
+virscan查毒报告：http://r.virscan.org/language/zh-cn/report/c4a13a06949471a8788a4b32sup	c19a7174d  
 哈勃分析系统：https://habo.qq.com/file/showdetail?pk=ADcGZ11oB2MIPVs6U2Y%3D
+
 ------------------------------temp------------------------
 17楼wifi密码: usky05922226199@%2
 15楼WiFi密码: 05922226199
 svn账号密码: xiezh   ytkj@Xzh239@
-svn://192.168.0.212/cdnrepo/02-code/gslb-analysis-api
-svn://192.168.0.212/cdnrepo/02-code/py
-svn://192.168.0.212/cdnrepo/01-docs/API/spm
-svn://192.168.0.212/cdnrepo/02-code/spm-api
+svn://172.16.16.100/cdnrepo/02-code/gslb-analysis-api
+svn://172.16.16.100/cdnrepo/02-code/py
+svn://172.16.16.100/cdnrepo/01-docs/API/spm
+svn://172.16.16.100/cdnrepo/02-code/spm-api
+svn://172.16.16.100/cdnrepo/02-code/msp-api
+
 VPN: IP:117.30.209.252   username:uskydvpn    password:uskyipsec4ytkj
-IP: 192.168.0.98  NetMask:255.255.255.0  Gateway:192.168.0.1  DNS: 192.168.0.214/1.1.1.1
+
 spm地址: 
 151数据库: mysql -uusky -pusky@123456
 docker机: root  usky666!#%
@@ -54,7 +55,6 @@ docker机: root  usky666!#%
 mysql -h 103.118.36.210 -u usky -pusky@123456
 
 ---------------msp-------------
-source /root/virtualenvs/msp/bin/activate && cd /usr/local/msp-api/bin/msp/
 
 ./deploy.sh --domain msp-api.uskycdn.com --env prod
 
@@ -83,12 +83,65 @@ rm -rf ./apps/account/migrations/ ./apps/monitor/migrations/ ./apps/query/migrat
 python manage.py migrate --settings settings.prod
 python manage.py makemigrations --settings settings.prod
 python manage.py init_apis --settings settings.prod
-source /data/spm/bin/activate && cd /usr/local/spm-api/bin/spm
-./deploy.sh --domain msp-api.uskycdn.com --env prod
+./deploy.sh --domain msp-api.uskycdn.com --env dev --operation update --dbhost 192.168.0.240
+./deploy.sh --domain spm-api.uskycdn.com --env dev --operation update --dbhost 127.0.0.1
 source /root/virtualenvs/msp/bin/activate && cd /usr/local/msp-api/bin/msp/
-
-
-
+source /data/spm/bin/activate && cd /usr/local/spm-api/bin/spm
 
 https://jinniumengmeng.github.io/my_gitbook/
 https://wahaha00.gitee.io/my_gitbook/
+
+
+
+----------------------------------------------------------------
+
+prod和dev 的 数据库域名 改为mysql.msp.uskycdn.com   部署时用的域名 改为 msp-api.uskycdn.com 
+游天云的 用mysql.msp.utcache.com     msp-api.utcache.com
+
+
+
+|参数名|类型|是否是必填参数|说明|
+|:-----  |:-----|-----  |---|
+|datefrom |float|NO   |开始时间戳|
+|dateto |float |NO  |截止时间戳|
+|customer-id |int |NO  |用户编号|
+|node |string |NO  |搜索的节点，默认返回全部节点|
+|timezone |string  |NO |默认Asia/Shanghai|
+
+攻击次数趋势和CC攻击总次数   次数  http://192.168.0.232:8033/api/report/attack/count/trend
+
+攻击IP数趋势图   IP http://192.168.0.232:8033/api/report/attack/cip/trend
+
+
+
+ps -aux `| grep "rabbitmq_recv_send.py" `|grep -v grep`| cut -c 9-15 `| xargs kill -9
+find ./ -name "*.pyc" | xargs rm
+
+CONF_DIR="/usr/local/refreshserver/etc"
+/usr/local/refreshserver/log/
+
+import logging
+from logging.handlers import TimedRotatingFileHandler
+
+WORKSPACE_DIR = '/usr/local/refreshserver'
+os.path.join(WORKSPACE_DIR+'/log/rabbit_mq_recv_send.log'),
+
+<div class="layout-grid-find" id="live">
+<div class="layout-grid-find" id="notStart">
+<div class="layout-grid-find" id="finished">
+
+1. 修改spm中cdn流量详情返回的数据格式
+2. 修改路由与营运商update接口, 修复参数判断与赋值的bug
+3. 重新测试基础数据管理中路由与营运商增删改查等接口, 并完善对应的接口文档
+
+
+常用的一般都是使用BeautifSoup、requests搭配组合抓取静态页面，即网页上显示的数据都可以在html源码中找到，而不是网站通过js或者ajax异步加载的，这种类型的网站数据爬取起来较简单。但是有些网站上的数据是通过执行js代码来更新的，这时传统的方法就不是那么适用了
+
+适用selenium模拟浏览器行为更新网页获取更新后的数据
+
+
+pip install selenium
+
+另一个是PhantomJS，这是一个无界面的,可脚本编程的WebKit浏览器引擎，百度进行搜索，在其官网下进行下载，下载后无需安装，放到指定路径下，在使用时只需指定文件所在路径即可。
+
+
