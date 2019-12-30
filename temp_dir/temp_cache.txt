@@ -90,8 +90,9 @@ source /data/spm/bin/activate && cd /usr/local/spm-api/bin/spm
 
 https://jinniumengmeng.github.io/my_gitbook/
 https://wahaha00.gitee.io/my_gitbook/
-
-
+ Tor 暗网代理、Socks 代理等。
+ 讯代理、阿布云代理、芝麻代理等
+ ADSL拨号代理, 云立方
 
 ----------------------------------------------------------------
 
@@ -134,14 +135,28 @@ os.path.join(WORKSPACE_DIR+'/log/rabbit_mq_recv_send.log'),
 2. 修改路由与营运商update接口, 修复参数判断与赋值的bug
 3. 重新测试基础数据管理中路由与营运商增删改查等接口, 并完善对应的接口文档
 
-
 常用的一般都是使用BeautifSoup、requests搭配组合抓取静态页面，即网页上显示的数据都可以在html源码中找到，而不是网站通过js或者ajax异步加载的，这种类型的网站数据爬取起来较简单。但是有些网站上的数据是通过执行js代码来更新的，这时传统的方法就不是那么适用了
 
 适用selenium模拟浏览器行为更新网页获取更新后的数据
 
-
+MongoDB、Redis
 pip install selenium
 
 另一个是PhantomJS，这是一个无界面的,可脚本编程的WebKit浏览器引擎，百度进行搜索，在其官网下进行下载，下载后无需安装，放到指定路径下，在使用时只需指定文件所在路径即可。
 
+pip3 install fake-useragent
+pip install lxml
 
+from fake_useragent import UserAgent
+ua = UserAgent()\\\、
+print(ua.random)
+
+headers = {'User-Agent': ua.random}
+
+页面url拼接
+
+/home/ubuntu/svn_project/msp-api/trunk/bin/msp/apps/query/services.py +406
+
+
+
+INSERT INTO juniuhui.user_info (`id`, `user_name`, `user_position`, `user_team`, `user_address`, `user_seniority`, `user_order`, `user_skills`, `user_charges`, `user_instroduce`, `user_product`, `user_instrodcue_num`, `user_url`) VALUES ('1', NULL, NULL, NULL, NULL, '0', NULL, NULL, '0', NULL, NULL, NULL, NULL);
