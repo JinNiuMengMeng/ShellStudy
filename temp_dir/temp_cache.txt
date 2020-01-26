@@ -45,7 +45,7 @@ svn://172.16.16.100/cdnrepo/02-code/py
 svn://172.16.16.100/cdnrepo/01-docs/API/spm
 svn://172.16.16.100/cdnrepo/02-code/spm-api
 svn://172.16.16.100/cdnrepo/02-code/msp-api
-
+EU7bDISABIv6d8LeGv2KGA
 VPN: IP:117.30.209.252   username:uskydvpn    password:uskyipsec4ytkj
 
 spm地址: 
@@ -53,6 +53,11 @@ spm地址:
 docker机: root  usky666!#%
 堡垒机账号: xiezh  xiezhaoheng
 mysql -h 103.118.36.210 -u usky -pusky@123456
+svn  yefuchi   PnGCVqFDcGhELFM2
+
+ssh -p 57892 -i /etc/ansible/ssh_keys/jmp_rsa uskycdn@45.32.57.169
+
+本机: USKYusky@123456..
 
 ---------------msp-------------
 
@@ -93,29 +98,23 @@ https://wahaha00.gitee.io/my_gitbook/
  Tor 暗网代理、Socks 代理等。
  讯代理、阿布云代理、芝麻代理等
  ADSL拨号代理, 云立方
-
+http://urku.ancenye.com/
 ----------------------------------------------------------------
 
 prod和dev 的 数据库域名 改为mysql.msp.uskycdn.com   部署时用的域名 改为 msp-api.uskycdn.com 
 游天云的 用mysql.msp.utcache.com     msp-api.utcache.com
 
+用户名 yefuchi
+密码 PnGCVqFDcGhELFM2
+
+logger_path = "/usr/local/op_cache/dist/supervisor-refresh-server.log"
+ps -ef | grep "supervisor\|refresh_server_start" | awk '{ if ($8 != "grep") {print$2 }}' | xargs -r kill -9
 
 
-|参数名|类型|是否是必填参数|说明|
-|:-----  |:-----|-----  |---|
-|datefrom |float|NO   |开始时间戳|
-|dateto |float |NO  |截止时间戳|
-|customer-id |int |NO  |用户编号|
-|node |string |NO  |搜索的节点，默认返回全部节点|
-|timezone |string  |NO |默认Asia/Shanghai|
-
-攻击次数趋势和CC攻击总次数   次数  http://192.168.0.232:8033/api/report/attack/count/trend
-
-攻击IP数趋势图   IP http://192.168.0.232:8033/api/report/attack/cip/trend
+ps -ef | grep "supervisor\|refresh_server_start" | grep -v "grep" | awk '{ print$2 }' | xargs -r kill -9
+ps -aux | grep "navi*\|window*" |grep -v grep| cut -c 9-15 | xargs kill -9
 
 
-
-ps -aux `| grep "rabbitmq_recv_send.py" `|grep -v grep`| cut -c 9-15 `| xargs kill -9
 find ./ -name "*.pyc" | xargs rm
 
 CONF_DIR="/usr/local/refreshserver/etc"
@@ -131,32 +130,51 @@ os.path.join(WORKSPACE_DIR+'/log/rabbit_mq_recv_send.log'),
 <div class="layout-grid-find" id="notStart">
 <div class="layout-grid-find" id="finished">
 
-1. 修改spm中cdn流量详情返回的数据格式
-2. 修改路由与营运商update接口, 修复参数判断与赋值的bug
-3. 重新测试基础数据管理中路由与营运商增删改查等接口, 并完善对应的接口文档
+svn://172.16.16.100/cdnrepo/02-code/py/op_cache
 
-常用的一般都是使用BeautifSoup、requests搭配组合抓取静态页面，即网页上显示的数据都可以在html源码中找到，而不是网站通过js或者ajax异步加载的，这种类型的网站数据爬取起来较简单。但是有些网站上的数据是通过执行js代码来更新的，这时传统的方法就不是那么适用了
+103.134.150.16
+103.134.150.17
+103.134.150.18
+103.134.150.19
 
-适用selenium模拟浏览器行为更新网页获取更新后的数据
+1577427232-(7*24*60*60)'
 
-MongoDB、Redis
-pip install selenium
-
-另一个是PhantomJS，这是一个无界面的,可脚本编程的WebKit浏览器引擎，百度进行搜索，在其官网下进行下载，下载后无需安装，放到指定路径下，在使用时只需指定文件所在路径即可。
-
-pip3 install fake-useragent
-pip install lxml
-
-from fake_useragent import UserAgent
-ua = UserAgent()\\\、
-print(ua.random)
-
-headers = {'User-Agent': ua.random}
-
-页面url拼接
-
-/home/ubuntu/svn_project/msp-api/trunk/bin/msp/apps/query/services.py +406
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'usky@123456' WITH GRANT OPTION;
+USKYusky@123456..
 
 
+lbdns开关
+/api/msp/0.1/DDOSDefense/  interval  这个接口要入参时间间隔
+整体攻击趋势
 
-INSERT INTO juniuhui.user_info (`id`, `user_name`, `user_position`, `user_team`, `user_address`, `user_seniority`, `user_order`, `user_skills`, `user_charges`, `user_instroduce`, `user_product`, `user_instrodcue_num`, `user_url`) VALUES ('1', NULL, NULL, NULL, NULL, '0', NULL, NULL, '0', NULL, NULL, NULL, NULL);
+ps -ef | grep "refresh_server_start.py" | grep -v "grep" | awk '{ print$2 }' | xargs -r kill -9
+
+https://hyczby.com/proxy.pac
+
+
+svn copy svn://172.16.16.100/cdnrepo/02-code/py/refreshserver svn://172.16.16.100/cdnrepo/02-code/py/tags/refreshserver-1.0 -m "1.0版本, 2020-01-12, RabbitMQ数据获取: 多进程; rpc服务器下发: 多线程"
+水果姐和格莱美，村上春树和诺贝尔
+
+
+data.mistat.intl.xiaomi.com,mobilenetworkscoring-pa.googleapis.com,baidu.com,weatherapi.market.xiaomi.com,google.com,static.dingtalk.com,android.googleapis.com,applog.uc.cn,px.ucweb.com,audid-api.taobao.com,dtmall-tel.alicdn.com,configsvr.msf.3g.qq.com,loggw.alipay.comconnect.rom.miui.com,oth.eve.mdt.qq.com,amdc.m.taobao.com,r.browser.intl.miui.com,api.browser.intl.miui.com,hot.browser.intl.miui.com,httpdns.browser.miui.com,rhdc-acs.m.taobao.com,zconfig.alibabausercontent.com,zres.alicdn.com,ifs.tanx.com,userlink.alicdn.com,h5vv.video.qq.com,support.weixin.qq.com,mmbiz.qlogo.cn,wx.qlogo.cn,btrace.qq.com,log.tbs.qq.com,res.wx.qq.com,btrace.qq.com,mmbiz.qpic.cn,midas.gtimg.cn,mp.weixin.qq.com,control.aps.amap.com,h5vv6.video.qq.com,puui.qpic.cn,render.alipay.com,www.google.com.hk,mdap.alipay.com,www.google.com,ulogs.umeng.com,www.didapinche.com,static.didapinche.com,unpkg.com,loc.map.baidu.com,venus.didachuxing.com,api.map.baidu.com,pluto.didapinche.com,amdc.alipay.com,m5.amap.com,optimus-ads.amap.com,gdloc.qchannel03.cn,mps.amap.com,sns.amap.com,collapsar.amap.com,www.qchannel01.cn,b.qchannel03.cn,wgo.mmstat.com,awaken.amap.com,free-offlinedata.amap.com,page.amap.com,sync.amap.com,adashbc.m.taobao.com,nbsdk-baichuan.alicdn.com,astat.bugly.qq.com,m.irs01.com,android.bugly.qq.com,free-aos-cdn-image.amap.com,ts.amap.com,oss.amap.com,adashx.m.taobao.com,offline.aps.amap.com,cgicol.amap.com,sngapm.tencent.com,lbs.map.qq.com,yun-hl.3g.qq.com,sdkconfig.video.qq.com,mcgi.v.qq.com,commdata.v.qq.com,d.url.cn,pingma.qq.com,oth.str.mdt.qq.com,sec.video.qq.com,c.isdspeed.qq.com,imgcache.qq.com,dnet.mb.qq.com,i.gtimg.cn,udblog.huya.com,myun.tenpay.com,apm3.music.163.com,geomobileservices-pa.googleapis.com,android.rqd.qq.com
+
+
+
+https://music.163.com/#/song?id=155885
+http://alpha12101619.a002.cocoamu.com/video/test.mp4
+
+
+
+curl -s -XPREFETCH -H host: ysy09.wordjuan.com http://127.0.0.1/image/big.png -k -o /dev/null
+curl -s -XPREFETCH -H host: ysy01.starrye.com http://127.0.0.1/apk/test.apk -k -o /dev/null
+curl -s -XPREFETCH -H host: ysy08.wordjuan.com http://127.0.0.1/apk/test.apk -k -o /dev/null
+curl -s -XPREFETCH -H host: ysy06.wordjuan.com http://127.0.0.1/apk/test.apk -k -o /dev/null
+curl -s -XPREFETCH -H host: ysy05.wordjuan.com http://127.0.0.1/apk/test.apk -k -o /dev/null
+
+
+
+import requests
+requ = requests.session()
+temp_url = "http://127.0.0.1/apk/test.apk"
+response = requ.get(url=temp_url, headers={"Host": "ysy10.starrye.com"}, verify=False, timeout=(5, 10))
+print response.status_code
