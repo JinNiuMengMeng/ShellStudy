@@ -3,7 +3,7 @@ attrs==19.1.0
 backcall==0.1.0
 basemap==1.2.1
 beautifulsoup4==4.8.1
-bleach==3.1.0
+bleach==3.1.1
 bullet==2.1.0
 cairocffi==1.1.0
 CairoSVG==2.4.2
